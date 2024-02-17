@@ -15,6 +15,15 @@ run/main_scene="res://scenes/Maps/Map01.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
+[gui]
+
+theme/custom_font="res://res/FSEX302.ttf"
+theme/default_font_antialiasing=0
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(1, 1, 1, 1)
