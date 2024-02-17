@@ -1,4 +1,11 @@
 CalgaryHacks 2024
 =================
 
-she calgary on my hacks
+Submission to CalgaryHacks 2024. Team members:
+- Alan @kagamiAL
+- Ahsan @AhsanWritesCode
+- Nathan @Zirconova
+- Linus @RuiWare
+- Vittorio @pastthepixels
+
+hamburger
