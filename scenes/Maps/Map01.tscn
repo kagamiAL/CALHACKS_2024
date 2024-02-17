@@ -12,21 +12,32 @@ texture_region_size = Vector2i(64, 64)
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_1/angular_velocity = 0.0
 1:0/0 = 0
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_1/angular_velocity = 0.0
+1:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, 32, -1, -32, 32, 32)
 0:1/0 = 0
 0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_1/angular_velocity = 0.0
+0:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, 16.5, 32, 16.5, 32, 32, -32, 32)
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, 32, -32, 32)
+1:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_1/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_xrcxi"]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_u0k2p")
+physics_layer_1/collision_layer = 2
 sources/3 = SubResource("TileSetAtlasSource_jlpri")
 
 [node name="Map01" type="Node2D"]
@@ -39,3 +50,4 @@ format = 2
 layer_0/tile_data = PackedInt32Array(327680, 3, 0, 327681, 3, 0, 327682, 3, 0, 327683, 3, 0, 327684, 3, 0, 327685, 3, 0, 393220, 3, 0, 393219, 3, 0, 393218, 3, 0, 393217, 3, 0, 393216, 3, 0, 393221, 3, 0, 458757, 3, 0, 458756, 3, 0, 458755, 3, 0, 458754, 3, 0, 458753, 3, 0, 458752, 3, 0, 524288, 3, 0, 589824, 3, 0, 589825, 3, 0, 589826, 3, 0, 589827, 3, 0, 589828, 3, 0, 589829, 3, 0, 524293, 3, 0, 524292, 3, 0, 524291, 3, 0, 524290, 3, 0, 524289, 3, 0, 393222, 3, 0, 393223, 3, 0, 393224, 3, 0, 393225, 3, 0, 458761, 3, 0, 524297, 3, 0, 589833, 3, 0, 589832, 3, 0, 589831, 3, 0, 589830, 3, 0, 524294, 3, 0, 458758, 3, 0, 458759, 3, 0, 458760, 3, 0, 524296, 3, 0, 524295, 3, 0, 458762, 3, 0, 458763, 3, 0, 458764, 3, 0, 458765, 3, 0, 524301, 3, 0, 589837, 3, 0, 589836, 3, 0, 589835, 3, 0, 589834, 3, 0, 524298, 3, 0, 524299, 3, 0, 524300, 3, 0, 524302, 3, 0, 589838, 3, 0, 589839, 3, 0, 589840, 3, 0, 589841, 3, 0, 524305, 3, 0, 458769, 3, 0, 458768, 3, 0, 458767, 3, 0, 458766, 3, 0, 524303, 3, 0, 524304, 3, 0, 393234, 3, 0, 393235, 3, 0, 393236, 3, 0, 393237, 3, 0, 393238, 3, 0, 458774, 3, 0, 524310, 3, 0, 589846, 3, 0, 589845, 3, 0, 589844, 3, 0, 589843, 3, 0, 589842, 3, 0, 524306, 3, 0, 458770, 3, 0, 458771, 3, 0, 458772, 3, 0, 524308, 3, 0, 524307, 3, 0, 458773, 3, 0, 524309, 3, 0, 327701, 3, 0, 327702, 3, 0, 327703, 3, 0, 262167, 3, 0, 393239, 3, 0, 458775, 3, 0, 524311, 3, 0, 589847, 3, 0, 589848, 3, 0, 524312, 3, 0, 458776, 3, 0, 393240, 3, 0, 327704, 3, 0, 262168, 3, 0, 262169, 3, 0, 327705, 3, 0, 393241, 3, 0, 458777, 3, 0, 524313, 3, 0, 589849, 3, 0, 327686, 65539, 1, 393226, 65539, 1, 393233, 65539, 268435457, 327700, 65539, 268435457, 262166, 65539, 268435457, 327687, 65539, 0, 327688, 65539, 0, 327689, 65539, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_hrtao")]
+collision_mask = 3
