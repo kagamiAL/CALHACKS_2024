@@ -1,13 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhju5n4ymgoto"]
+[gd_scene load_steps=6 format=3 uid="uid://bhju5n4ymgoto"]
 
 [ext_resource type="Script" path="res://scenes/Main/Menu.gd" id="1_r3bay"]
-
-[sub_resource type="Gradient" id="Gradient_gmi1w"]
-offsets = PackedFloat32Array(0, 0.531746, 1)
-colors = PackedColorArray(0.152941, 0.129412, 0.309804, 1, 0.152941, 0.129412, 0.929412, 1, 0.152941, 0.129412, 0.309804, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_a7fu1"]
-gradient = SubResource("Gradient_gmi1w")
+[ext_resource type="Texture2D" uid="uid://bpmoncorm0y4b" path="res://res/background.png" id="2_csu54"]
 
 [sub_resource type="SystemFont" id="SystemFont_nlf74"]
 font_names = PackedStringArray("Century Gothic")
@@ -34,7 +28,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture1D_a7fu1")
+texture = ExtResource("2_csu54")
+expand_mode = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
