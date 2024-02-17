@@ -8,6 +8,8 @@ radius = 15.0
 height = 100.0
 
 [node name="Player" type="CharacterBody2D"]
+floor_constant_speed = true
+floor_max_angle = 1.48353
 script = ExtResource("1_3ef65")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

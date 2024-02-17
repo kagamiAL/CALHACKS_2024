@@ -11,5 +11,10 @@ config_version=5
 [application]
 
 config/name="CALHACKS_2024"
+run/main_scene="res://scenes/Maps/Map01.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(1, 1, 1, 1)
