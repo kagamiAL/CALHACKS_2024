@@ -92,6 +92,7 @@ func reset():
 	set_process(true)
 	set_physics_process(true)
 	set_deferred("freeze", false)
+	linear_velocity = Vector2()
 	# Show sprite
 	$Sprite.show()
 	$%Time.show()
