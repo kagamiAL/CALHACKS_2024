@@ -56,6 +56,14 @@ func _physics_process(delta):
 			for collision in _collisions:
 				var layer = object.get_layer_for_body_rid(collision)
 				handle_tile_collision(layer)
+	
+	# Who up rolling they boulder (rolling SFX)
+	# TODO hard coded stop hard coding magic numbers idiot
+	$RollingTheyBoulder.volume_db = linear_velocity.x/100
+	if is_on_floor() and linear_velocity.x != 0:
+		if not $RollingTheyBoulder.playing: $RollingTheyBoulder.play()
+	else:
+		$RollingTheyBoulder.stop()
 
 func play_animations(dir_x):
 	pass

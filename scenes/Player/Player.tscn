@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cv1b38h0riay4"]
+[gd_scene load_steps=21 format=3 uid="uid://cv1b38h0riay4"]
 
 [ext_resource type="Script" path="res://scenes/Player/Player.gd" id="1_3ef65"]
 [ext_resource type="Shader" path="res://scenes/Player/LensDistortion.gdshader" id="2_qwpdh"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://bemh1dfxd1b7l" path="res://res/audio/jump1.ogg" id="5_va2dx"]
 [ext_resource type="AudioStream" uid="uid://ch8k26eu6c4h1" path="res://res/audio/contact1.ogg" id="6_rpob6"]
 [ext_resource type="AudioStream" uid="uid://c5dxdavfddbrp" path="res://res/audio/death1.ogg" id="7_khthc"]
+[ext_resource type="AudioStream" uid="uid://7opin6amejv4" path="res://res/audio/roll_loop.ogg" id="8_bn5x6"]
 [ext_resource type="Script" path="res://scenes/Player/Sprite.gd" id="18_wu17r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ju427"]
@@ -217,6 +218,9 @@ bus = &"SoundEffects"
 stream = ExtResource("7_khthc")
 volume_db = 1.0
 bus = &"SoundEffects"
+
+[node name="RollingTheyBoulder" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_bn5x6")
 
 [connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
 [connection signal="body_shape_exited" from="Area2D" to="." method="_on_area_2d_body_shape_exited"]
