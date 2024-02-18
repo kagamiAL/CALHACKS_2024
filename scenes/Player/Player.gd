@@ -115,6 +115,5 @@ func move_body(targetPos: Vector2):
 func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	_collisions.append(body_rid)
 
-
 func _on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
 	_collisions.remove_at(_collisions.find(body_rid))

@@ -10,6 +10,6 @@ func _on_play_button_down():
 	transition.queue_free()
 	scene_switch.goto_scene("res://scenes/Main/Game.tscn")
 
-
 func _on_quit_button_down():
 	get_tree().quit()
+
