@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://de58olgjcymac"]
+[gd_scene load_steps=2 format=3 uid="uid://de58olgjcymac"]
 
 [ext_resource type="TileSet" uid="uid://83e6r7d4e13" path="res://scenes/Tiles/TileMap.tres" id="1_atcdf"]
-[ext_resource type="PackedScene" uid="uid://cv1b38h0riay4" path="res://scenes/Player/Player.tscn" id="2_8txe8"]
 
 [node name="Map03" type="Node2D"]
 
@@ -17,6 +16,3 @@ layer_2/name = "Spikes"
 layer_2/tile_data = PackedInt32Array(1048524, 65537, 0, 1048521, 65537, 0, 1048518, 65537, 0, 1048515, 65537, 0, 1048512, 65537, 0, 1048509, 65537, 0, 1048506, 65537, 0, 1048503, 65537, 0, 1048500, 65537, 0, 1048497, 65537, 0, 1048494, 65537, 0, 1048491, 65537, 0, 1048535, 65537, 0)
 layer_3/name = "Goals"
 layer_3/tile_data = PackedInt32Array(982951, 131073, 0)
-
-[node name="Player" parent="." instance=ExtResource("2_8txe8")]
-collision_mask = 3
