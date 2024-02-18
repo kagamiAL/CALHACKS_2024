@@ -1,8 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://cv1b38h0riay4"]
+[gd_scene load_steps=20 format=3 uid="uid://cv1b38h0riay4"]
 
 [ext_resource type="Script" path="res://scenes/Player/Player.gd" id="1_3ef65"]
 [ext_resource type="Shader" path="res://scenes/Player/LensDistortion.gdshader" id="2_qwpdh"]
 [ext_resource type="Script" path="res://scenes/Player/Camera2D.gd" id="3_q7ypj"]
+[ext_resource type="AudioStream" uid="uid://bemh1dfxd1b7l" path="res://res/audio/jump1.ogg" id="5_va2dx"]
+[ext_resource type="AudioStream" uid="uid://ch8k26eu6c4h1" path="res://res/audio/contact1.ogg" id="6_rpob6"]
+[ext_resource type="AudioStream" uid="uid://c5dxdavfddbrp" path="res://res/audio/death1.ogg" id="7_khthc"]
 [ext_resource type="Script" path="res://scenes/Player/Sprite.gd" id="18_wu17r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ju427"]
@@ -107,11 +110,9 @@ initial_velocity_max = 256.0
 gravity = Vector3(0, 98, 0)
 scale_min = 0.0
 alpha_curve = SubResource("CurveTexture_u6aw7")
-hue_variation_max = 0.03
 collision_mode = 1
 collision_friction = 0.0
-collision_bounce = 0.05
-collision_use_scale = true
+collision_bounce = 0.0
 
 [sub_resource type="Gradient" id="Gradient_3rast"]
 colors = PackedColorArray(0.803922, 0.0352941, 0.160784, 1, 0.840444, 0, 0.104624, 1)
@@ -183,7 +184,7 @@ shape = SubResource("CircleShape2D_hjcw1")
 [node name="Sprite" type="Node2D" parent="."]
 script = ExtResource("18_wu17r")
 radius = 23.0
-color = Color(1, 0.211765, 0.211765, 1)
+color = Color(1, 0.06, 0.0756664, 1)
 max_shake = 0.2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -197,14 +198,24 @@ amount = 256
 process_material = SubResource("ParticleProcessMaterial_gp1r7")
 texture = SubResource("GradientTexture2D_aq7ht")
 one_shot = true
-explosiveness = 0.4
-collision_base_size = 2.0
-trail_enabled = true
-trail_lifetime = 0.1
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 top_level = true
 target_position = Vector2(0, 35)
+
+[node name="JumpAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_va2dx")
+bus = &"SoundEffects"
+
+[node name="ContactAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_rpob6")
+volume_db = 1.0
+bus = &"SoundEffects"
+
+[node name="DeathAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_khthc")
+volume_db = 1.0
+bus = &"SoundEffects"
 
 [connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
 [connection signal="body_shape_exited" from="Area2D" to="." method="_on_area_2d_body_shape_exited"]
