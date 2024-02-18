@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="128"
+   width="256"
    height="128"
-   viewBox="0 0 33.866667 33.866667"
+   viewBox="0 0 67.733335 33.866667"
    version="1.1"
    id="svg1"
    inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
@@ -23,36 +23,64 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="4.4044578"
-     inkscape:cx="43.024592"
-     inkscape:cy="68.339853"
+     inkscape:zoom="4"
+     inkscape:cx="118.625"
+     inkscape:cy="38.25"
      inkscape:window-width="1920"
-     inkscape:window-height="1044"
+     inkscape:window-height="1018"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1" />
   <defs
      id="defs1">
-    <marker
-       style="overflow:visible"
-       id="ArrowWideHeavy"
-       refX="0"
-       refY="0"
-       orient="auto-start-reverse"
-       inkscape:stockid="Wide, heavy arrow"
-       markerWidth="0.5"
-       markerHeight="0.5"
-       viewBox="0 0 1 1"
-       inkscape:isstock="true"
-       inkscape:collect="always"
-       preserveAspectRatio="xMidYMid"
-       markerUnits="userSpaceOnUse">
+    <inkscape:path-effect
+       effect="powerclip"
+       id="path-effect11"
+       is_visible="true"
+       lpeversion="1"
+       inverse="true"
+       flatten="false"
+       hide_clip="false"
+       message="Use fill-rule evenodd on &lt;b&gt;fill and stroke&lt;/b&gt; dialog if no flatten result after convert clip to paths." />
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect2"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,2.0676081,0,1 @ F,0,1,1,0,2.0676081,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath10">
+      <g
+         id="g11"
+         clip-path="none"
+         style="display:none">
+        <path
+           style="color:#000000;fill:#64bb57;-inkscape-stroke:none"
+           d="M 37.365936,1.9038144 V 16.933333"
+           id="path10" />
+        <path
+           id="path11"
+           style="color:#000000;fill:#64bb57;-inkscape-stroke:none"
+           d="m 37.365678,1.9037598 v 5.167e-4 H 36.956917 V 16.93385 h 0.816488 V 7.9840088 l 0.131258,0.08785 c 0,0 1.341734,0.9301096 2.737817,0.8128703 0.658853,-0.055333 1.140493,-0.2203392 1.652613,-0.3632853 0.512118,-0.1429461 1.066063,-0.2706388 1.935282,-0.2816366 1.734786,-0.021945 2.826184,0.4805908 2.826184,0.4805908 l 0.412378,0.1896526 -0.0021,-6.222876 -0.136942,-0.085783 c 0,0 -1.271471,-0.7858804 -3.070097,-0.6878133 -1.842607,0.1004643 -3.442992,1.3564769 -6.076115,0.1741496 L 37.773405,1.9042765 Z" />
+      </g>
       <path
-         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
-         d="m 1,0 -3,3 h -2 l 3,-3 -3,-3 h 2 z"
-         id="path5" />
-    </marker>
+         id="lpe_path-effect11"
+         class="powerclip"
+         d="M 28.866665,-4.9999992 H 55.799997 V 21.933333 H 28.866665 Z M 37.365936,16.933333 V 1.9038144 m -2.58e-4,-5.46e-5 v 5.167e-4 H 36.956917 V 16.93385 h 0.816488 V 7.9840088 l 0.131258,0.08785 c 0,0 1.341734,0.9301096 2.737817,0.8128703 0.658853,-0.055333 1.140493,-0.2203392 1.652613,-0.3632853 0.512118,-0.1429461 1.066063,-0.2706388 1.935282,-0.2816366 1.734786,-0.021945 2.826184,0.4805908 2.826184,0.4805908 l 0.412378,0.1896526 -0.0021,-6.222876 -0.136942,-0.085783 c 0,0 -1.271471,-0.7858804 -3.070097,-0.6878133 -1.842607,0.1004643 -3.442992,1.3564769 -6.076115,0.1741496 L 37.773405,1.9042765 Z" />
+    </clipPath>
   </defs>
   <g
      inkscape:label="Layer 1"
@@ -66,23 +94,29 @@
        x="8.9009603e-07"
        y="8.9009603e-07" />
     <path
-       style="fill:#ff3636;fill-opacity:1;stroke-width:0;stroke:none;stroke-opacity:1"
-       d="M 16.933332,16.933332 25.217137,8.9009603e-7 33.866666,16.933333 Z"
-       id="path1" />
-    <rect
-       style="fill:#3b3b3b;fill-opacity:1;stroke-width:0"
-       id="rect2"
-       width="16.933332"
-       height="4.1585693"
-       x="0"
-       y="29.708096" />
-    <path
-       style="fill:#3b3b3b;fill-opacity:1;stroke:#3b3b3b;stroke-width:0.79375;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker-end:url(#ArrowWideHeavy)"
-       d="m 8.466666,29.708096 v -6.43324"
-       id="path3" />
+       id="rect1-1"
+       style="stroke-width:0;stroke:none;stroke-opacity:1;fill:#64bb57;fill-opacity:1"
+       d="M 36.70334,7.9504798e-7 H 47.963322 C 49.53484,7.9504798e-7 50.799997,1.2651578 50.799997,2.8366757 V 14.096658 c 0,1.571518 -1.265157,2.836675 -2.836675,2.836675 H 36.70334 c -1.571518,0 -2.836675,-1.265157 -2.836675,-2.836675 V 2.8366757 C 33.866665,1.2651578 35.131822,7.9504798e-7 36.70334,7.9504798e-7 Z"
+       clip-path="url(#clipPath10)"
+       inkscape:path-effect="#path-effect11"
+       inkscape:original-d="M 36.70334,7.9504798e-7 H 47.963322 C 49.53484,7.9504798e-7 50.799997,1.2651578 50.799997,2.8366757 V 14.096658 c 0,1.571518 -1.265157,2.836675 -2.836675,2.836675 H 36.70334 c -1.571518,0 -2.836675,-1.265157 -2.836675,-2.836675 V 2.8366757 C 33.866665,1.2651578 35.131822,7.9504798e-7 36.70334,7.9504798e-7 Z" />
     <path
        style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.79375;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        d="m 16.933332,16.933332 v 16.933332 l 16.933334,2e-6 z"
        id="path6" />
+    <path
+       id="rect2"
+       d="M 2.0676081,35.549622 H 14.865724 a 2.0676081,2.0676081 45 0 1 2.067608,2.067608 v 2.090961 H 0 V 37.61723 a 2.0676081,2.0676081 135 0 1 2.0676081,-2.067608 z"
+       style="fill:#df00f1;fill-opacity:1;stroke-width:0"
+       inkscape:path-effect="#path-effect2"
+       inkscape:original-d="m 0,35.549622 h 16.933332 v 4.158569 H 0 Z"
+       transform="translate(0,-5.8415243)" />
+    <path
+       style="fill:#ff3636;fill-opacity:1;stroke:none;stroke-width:0;stroke-opacity:1"
+       d="M 16.933333,16.933332 25.217138,1.0333333e-6 33.866667,16.933333 Z"
+       id="path1" />
+    <g
+       id="path4"
+       transform="translate(0.063492,0.033043)" />
   </g>
 </svg>
