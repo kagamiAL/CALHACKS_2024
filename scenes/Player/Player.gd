@@ -9,6 +9,8 @@ const SKEW_SPEED = 0.1
 
 @onready var initial_time = Time.get_ticks_msec()
 
+var _collisions = []
+
 signal died
 
 signal won
@@ -44,6 +46,11 @@ func _physics_process(delta):
 		linear_velocity.x = move_toward(linear_velocity.x, 0, SLOWDOWN)
 
 	$RayCast2D.position = global_position
+	for object in get_colliding_bodies():
+		if object is TileMap:
+			for collision in _collisions:
+				var layer = object.get_layer_for_body_rid(collision)
+				handle_tile_collision(layer)
 
 func play_animations(dir_x):
 	pass
@@ -95,11 +102,6 @@ func reset():
 func is_on_floor():
 	return $RayCast2D.is_colliding()
 
-
-func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	var layer = body.get_layer_for_body_rid(body_rid)
-	handle_tile_collision(layer)
-
 func _integrate_forces(state):
 	if reset_state:
 		state.transform = Transform2D(0.0, moveVector)
@@ -108,3 +110,10 @@ func _integrate_forces(state):
 func move_body(targetPos: Vector2):
 	moveVector = targetPos;
 	reset_state = true;
+
+func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	_collisions.append(body_rid)
+
+
+func _on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
+	_collisions.remove_at(_collisions.find(body_rid))

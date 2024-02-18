@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cv1b38h0riay4"]
+[gd_scene load_steps=17 format=3 uid="uid://cv1b38h0riay4"]
 
 [ext_resource type="Script" path="res://scenes/Player/Player.gd" id="1_3ef65"]
 [ext_resource type="Shader" path="res://scenes/Player/LensDistortion.gdshader" id="2_qwpdh"]
@@ -24,6 +24,9 @@ border_color = Color(0, 0, 0, 1)
 shadow_color = Color(0, 0, 0, 1)
 shadow_size = 1
 shadow_offset = Vector2(3, 3)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tmwe0"]
+radius = 25.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hjcw1"]
 radius = 23.0
@@ -167,6 +170,11 @@ text = "000"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_tmwe0")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_hjcw1")
 
@@ -192,4 +200,5 @@ one_shot = true
 top_level = true
 target_position = Vector2(0, 35)
 
-[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="body_shape_exited" from="Area2D" to="." method="_on_area_2d_body_shape_exited"]
