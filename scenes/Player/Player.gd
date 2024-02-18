@@ -76,7 +76,18 @@ func kill():
 	set_physics_process(false)
 	# Hide sprite
 	$Sprite.hide()
+	$Time.hide()
 	# All our food keeps BLOWING UP
 	$GPUParticles2D.emitting = true
 	# finally
 	emit_signal("died")
+
+func reset():
+	set_process(true)
+	set_physics_process(true)
+	# Show sprite
+	$Sprite.show()
+	$Time.show()
+	$GPUParticles2D.emitting = false
+	# Restart timer
+	initial_time = Time.get_ticks_msec()
