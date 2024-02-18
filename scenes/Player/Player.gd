@@ -15,7 +15,11 @@ signal won
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-	
+
+# Used to set position of a rigidbody since it is updated on every physics process
+var reset_state = false
+var moveVector: Vector2
+
 func _process(delta):
 	$%Time.text = "%.2f" % ((Time.get_ticks_msec() - initial_time) / 1000.)
 
@@ -38,7 +42,7 @@ func _physics_process(delta):
 		linear_velocity.x += direction * SPEED# * (1 if is_on_floor() else 0.5)
 	else:
 		linear_velocity.x = move_toward(linear_velocity.x, 0, SLOWDOWN)
-	
+
 	$RayCast2D.position = global_position
 
 func play_animations(dir_x):
@@ -52,13 +56,13 @@ func handle_tile_collision(tilemap_layer):
 	match tilemap_layer:
 		0:
 			return
-			
+
 		1: # Trampoline
 			linear_velocity.y = -trampoline_bounce_amt
-		
+
 		2: # Spike
 			kill()
-		
+
 		3:
 			emit_signal("won")
 
@@ -83,16 +87,26 @@ func reset():
 	set_deferred("freeze", false)
 	# Show sprite
 	$Sprite.show()
-	$Time.show()
+	$%Time.show()
 	$GPUParticles2D.emitting = false
 	# Restart timer
 	initial_time = Time.get_ticks_msec()
+	# Restart velocity + position
+	move_body(Vector2.ZERO)
 
 func is_on_floor():
 	return $RayCast2D.is_colliding()
 
 
 func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	print(body)
 	var layer = body.get_layer_for_body_rid(body_rid)
 	handle_tile_collision(layer)
+
+func _integrate_forces(state):
+	if reset_state:
+		state.transform = Transform2D(0.0, moveVector)
+		reset_state = false
+
+func move_body(targetPos: Vector2):
+	moveVector = targetPos;
+	reset_state = true;

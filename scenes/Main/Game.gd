@@ -47,7 +47,6 @@ func on_player_won():
 	next_level()
 	load_current_level()
 	player.reset()
-	player.set_position(Vector2(0, 0))
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
