@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cv1b38h0riay4"]
+[gd_scene load_steps=22 format=3 uid="uid://cv1b38h0riay4"]
 
 [ext_resource type="Script" path="res://scenes/Player/Player.gd" id="1_3ef65"]
 [ext_resource type="Shader" path="res://scenes/Player/LensDistortion.gdshader" id="2_qwpdh"]
@@ -8,6 +8,10 @@
 [ext_resource type="AudioStream" uid="uid://c5dxdavfddbrp" path="res://res/audio/death1.ogg" id="7_khthc"]
 [ext_resource type="AudioStream" uid="uid://7opin6amejv4" path="res://res/audio/roll_loop.ogg" id="8_bn5x6"]
 [ext_resource type="Script" path="res://scenes/Player/Sprite.gd" id="18_wu17r"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pk2sw"]
+friction = 0.6
+bounce = 0.05
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ju427"]
 shader = ExtResource("2_qwpdh")
@@ -125,6 +129,7 @@ height = 5
 fill_from = Vector2(1, 1)
 
 [node name="Player" type="RigidBody2D" groups=["player"]]
+physics_material_override = SubResource("PhysicsMaterial_pk2sw")
 continuous_cd = 2
 max_contacts_reported = 3
 contact_monitor = true
