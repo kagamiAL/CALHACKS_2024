@@ -1,8 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://cv1b38h0riay4"]
+[gd_scene load_steps=16 format=3 uid="uid://cv1b38h0riay4"]
 
 [ext_resource type="Script" path="res://scenes/Player/Player.gd" id="1_3ef65"]
 [ext_resource type="Shader" path="res://scenes/Player/LensDistortion.gdshader" id="2_qwpdh"]
+[ext_resource type="Script" path="res://scenes/Player/Camera2D.gd" id="3_q7ypj"]
 [ext_resource type="Script" path="res://scenes/Player/Sprite.gd" id="18_wu17r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ju427"]
+shader = ExtResource("2_qwpdh")
+shader_parameter/dispersion = 0.02
+shader_parameter/distort = 0.01
+shader_parameter/blur_amount = 0.02
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2koi"]
 content_margin_left = 16.0
@@ -20,12 +27,6 @@ shadow_offset = Vector2(3, 3)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hjcw1"]
 radius = 23.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ju427"]
-shader = ExtResource("2_qwpdh")
-shader_parameter/dispersion = 0.02
-shader_parameter/distort = 0.01
-shader_parameter/blur_amount = 0.02
 
 [sub_resource type="Animation" id="Animation_ay27k"]
 length = 0.001
@@ -116,18 +117,48 @@ width = 5
 height = 5
 fill_from = Vector2(1, 1)
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
-floor_stop_on_slope = false
-floor_constant_speed = true
-floor_max_angle = 1.48353
+[node name="Player" type="RigidBody2D" groups=["player"]]
+max_contacts_reported = 3
+contact_monitor = true
 script = ExtResource("1_3ef65")
-trampoline_bounce_amt = 800
+SPEED = 25
+trampoline_bounce_amt = 1000
 
-[node name="Time" type="Label" parent="."]
-offset_left = -134.0
-offset_top = 82.0
-offset_right = -54.0
-offset_bottom = 118.0
+[node name="Camera2D" type="Camera2D" parent="."]
+top_level = true
+script = ExtResource("3_q7ypj")
+move_speed = 0.281
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D"]
+visible = false
+material = SubResource("ShaderMaterial_ju427")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -575.0
+offset_top = -324.0
+offset_right = 577.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Time" type="Label" parent="Camera2D"]
+unique_name_in_owner = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = 116.0
+offset_right = 40.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
@@ -145,23 +176,6 @@ radius = 23.0
 color = Color(1, 0.06, 0.0756664, 1)
 max_shake = 0.6
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="Camera2D"]
-visible = false
-material = SubResource("ShaderMaterial_ju427")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -575.0
-offset_top = -324.0
-offset_right = 577.0
-offset_bottom = 324.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_dy76i")
@@ -173,3 +187,9 @@ amount = 256
 process_material = SubResource("ParticleProcessMaterial_gp1r7")
 texture = SubResource("GradientTexture2D_aq7ht")
 one_shot = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+top_level = true
+target_position = Vector2(0, 35)
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
