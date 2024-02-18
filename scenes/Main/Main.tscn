@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bhju5n4ymgoto"]
 
 [ext_resource type="Script" path="res://scenes/Main/Menu.gd" id="1_r3bay"]
-[ext_resource type="Texture2D" path="res://res/background.png" id="2_csu54"]
+[ext_resource type="Texture2D" uid="uid://bpmoncorm0y4b" path="res://res/background.png" id="2_csu54"]
 
 [sub_resource type="SystemFont" id="SystemFont_nlf74"]
 font_names = PackedStringArray("Century Gothic")

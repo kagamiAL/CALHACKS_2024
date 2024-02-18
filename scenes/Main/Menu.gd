@@ -2,7 +2,7 @@ extends Control
 
 @onready var start_button = $MarginContainer/HBoxContainer/VBoxContainer/Play as Button
 @onready var quit_button = $MarginContainer/HBoxContainer/VBoxContainer/Quit as Button
-@onready var start_level: PackedScene = preload("res://scenes/Main/Game.tscn") as PackedScene
+@onready var gameNode = get_node("/root/Game")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,4 +13,4 @@ func on_quit_pressed():
 	get_tree().quit()
 
 func on_play_pressed():
-	get_tree().change_scene_to_packed(start_level)
+	get_tree().change_scene_to_packed(gameNode.load_current_level())
