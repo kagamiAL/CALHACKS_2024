@@ -3,10 +3,12 @@ extends Node2D
 @onready var player_scene = preload("res://scenes/Player/Player.tscn") as PackedScene
 @onready var game_over_scene = preload("res://scenes/UI/GameOver.tscn") as PackedScene
 @onready var game_win_scene = preload("res://scenes/UI/GameWin.tscn") as PackedScene
+@onready var level_indicator_scene = preload("res://scenes/UI/LevelIndicator.tscn") as PackedScene
 
 var maps: Dictionary = {};
 var map_node: Node2D;
 var player;
+var level_indicator;
 
 var current_level: int = 0;
 
@@ -54,6 +56,7 @@ func on_player_won():
 		player.queue_free()
 		map_node.queue_free()
 	else:
+		level_indicator.change_indicated_level(current_level)
 		player.reset()
 		load_current_level()
 
@@ -66,6 +69,8 @@ func on_player_death():
 func _ready():
 	set_up_maps_from_dir("res://scenes/Maps")
 	load_current_level()
+	level_indicator = level_indicator_scene.instantiate()
+	add_child(level_indicator)
 	player = player_scene.instantiate()
 	add_child(player)
 	player.won.connect(on_player_won)
