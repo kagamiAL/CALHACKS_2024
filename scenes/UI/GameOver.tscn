@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://sdltg725x3dc"]
+[gd_scene load_steps=3 format=3 uid="uid://sdltg725x3dc"]
 
 [ext_resource type="Script" path="res://scenes/UI/GameOver.gd" id="1_2l57i"]
+
+[sub_resource type="SystemFont" id="SystemFont_qk703"]
+font_names = PackedStringArray("Century Gothic")
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -27,15 +30,29 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 25
 
-[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+[node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 80
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = 8
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = SubResource("SystemFont_qk703")
+theme_override_font_sizes/font_size = 64
 text = "GAME OVER!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Time" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.596078, 0.0117647, 0.854902, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 50
 text = "Time: 1:00"
 horizontal_alignment = 1

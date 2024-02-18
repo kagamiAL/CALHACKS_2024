@@ -8,4 +8,4 @@ func _ready():
 	pass
 
 func change_indicated_level(new_level: int):
-	level.text = "Level: " + str(new_level)
+	level.text = "Level " + str(new_level)
