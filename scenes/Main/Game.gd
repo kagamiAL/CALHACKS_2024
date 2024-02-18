@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var scene_switch = get_node("/root/SceneSwitch")
+@onready var scene_transition = preload("res://scenes/Main/SceneTransition.tscn")
 
 var maps: Dictionary = {};
 
@@ -23,7 +24,11 @@ func set_up_maps_from_dir(path: String):
 		print("An error occurred when trying to access the path.")
 
 func load_current_level():
-	return scene_switch.goto_scene(maps[current_level])
+	var transition_scene = scene_transition.instantiate()
+	get_tree().root.add_child(transition_scene)
+	await transition_scene.play_transition()
+	scene_switch.goto_scene(maps[current_level])
+	transition_scene.queue_free()
 
 func next_level():
 	if (current_level < maps.size()):
