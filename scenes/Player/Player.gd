@@ -22,17 +22,22 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var reset_state = false
 var moveVector: Vector2
 
+#Used to handle contact audio request
+var contact_audio_request: bool = false
+
 func _process(delta):
 	$%Time.text = "%.2f" % ((Time.get_ticks_msec() - initial_time) / 1000.)
 
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
+		contact_audio_request = true
 		linear_velocity.y += gravity * delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		$AnimationPlayer.play("jump")
+		$JumpAudio.play()
 		linear_velocity.y = JUMP_VELOCITY
 		linear_velocity.x *= 0
 
@@ -62,10 +67,14 @@ func play_animations(dir_x):
 func handle_tile_collision(tilemap_layer):
 	match tilemap_layer:
 		0:
+			if contact_audio_request:
+				contact_audio_request = false
+				$ContactAudio.play()
 			return
 
 		1: # Trampoline
 			linear_velocity.y = -trampoline_bounce_amt
+			$JumpAudio.play()
 
 		2: # Spike
 			kill()
@@ -83,6 +92,8 @@ func kill():
 	# Hide sprite
 	$Sprite.hide()
 	$%Time.hide()
+	# Play death sound
+	$DeathAudio.play()
 	# All our food keeps BLOWING UP
 	$GPUParticles2D.emitting = true
 	# finally
