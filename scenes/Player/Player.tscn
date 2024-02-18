@@ -124,7 +124,7 @@ height = 5
 fill_from = Vector2(1, 1)
 
 [node name="Player" type="RigidBody2D" groups=["player"]]
-continuous_cd = 1
+continuous_cd = 2
 max_contacts_reported = 3
 contact_monitor = true
 script = ExtResource("1_3ef65")
@@ -185,7 +185,7 @@ shape = SubResource("CircleShape2D_hjcw1")
 [node name="Sprite" type="Node2D" parent="."]
 script = ExtResource("18_wu17r")
 radius = 23.0
-color = Color(1, 0.06, 0.0756664, 1)
+color = Color(1, 0.211765, 0.211765, 1)
 max_shake = 0.2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
