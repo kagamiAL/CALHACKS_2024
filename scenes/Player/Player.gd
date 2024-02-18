@@ -89,8 +89,6 @@ func reset():
 	$Sprite.show()
 	$%Time.show()
 	$GPUParticles2D.emitting = false
-	# Restart timer
-	initial_time = Time.get_ticks_msec()
 	# Restart velocity + position
 	move_body(Vector2.ZERO)
 

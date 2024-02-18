@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var player_scene = preload("res://scenes/Player/Player.tscn") as PackedScene
+@onready var game_over_scene = preload("res://scenes/UI/GameOver.tscn") as PackedScene
 
 var maps: Dictionary = {};
 var map_node: Node2D;
@@ -48,6 +49,11 @@ func on_player_won():
 	load_current_level()
 	player.reset()
 
+func on_player_death():
+	var game_over = game_over_scene.instantiate()
+	game_over.player_time = player.get_node("Camera2D/Time").text
+	add_child(game_over)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_up_maps_from_dir("res://scenes/Maps")
@@ -55,3 +61,4 @@ func _ready():
 	player = player_scene.instantiate()
 	add_child(player)
 	player.won.connect(on_player_won)
+	player.died.connect(on_player_death)
