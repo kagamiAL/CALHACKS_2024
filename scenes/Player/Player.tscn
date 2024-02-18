@@ -124,7 +124,7 @@ height = 5
 fill_from = Vector2(1, 1)
 
 [node name="Player" type="RigidBody2D" groups=["player"]]
-continuous_cd = 2
+continuous_cd = 1
 max_contacts_reported = 3
 contact_monitor = true
 script = ExtResource("1_3ef65")
