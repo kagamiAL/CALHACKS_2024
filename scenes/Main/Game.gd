@@ -1,9 +1,9 @@
 extends Node2D
 
-@onready var player_scene = preload("res://scenes/Player/Player.tscn") as PackedScene
-@onready var game_over_scene = preload("res://scenes/UI/GameOver.tscn") as PackedScene
-@onready var game_win_scene = preload("res://scenes/UI/GameWin.tscn") as PackedScene
-@onready var level_indicator_scene = preload("res://scenes/UI/LevelIndicator.tscn") as PackedScene
+@export var player_scene = load("res://scenes/Player/Player.tscn") as PackedScene
+@onready var game_over_scene = load("res://scenes/UI/GameOver.tscn") as PackedScene
+@onready var game_win_scene = load("res://scenes/UI/GameWin.tscn") as PackedScene
+@onready var level_indicator_scene = load("res://scenes/UI/LevelIndicator.tscn") as PackedScene
 
 var maps: Dictionary = {};
 var map_node: Node2D;
@@ -19,8 +19,12 @@ func set_up_maps_from_dir(path: String):
 	if dir:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
+		
 		while file_name != "":
-			if !dir.current_is_dir():
+			print_debug(file_name) # human visual on file name found, remove for production
+			if file_name.ends_with(".remap"):
+				file_name = file_name.replace(".remap", "")
+			if not dir.current_is_dir():
 				var result = regex.search(file_name)
 				if result:
 					maps[int(result.get_string())] = load(path + "/" + file_name)
