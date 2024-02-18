@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://n32hsqeasyep" path="res://res/tiles.svg" id="1_bk6nc"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yloie"]
-load_path = "res://.godot/imported/spike.svg-e1e0029ad86b602f1a94ea86c1c5f699.ctex"
 
 [sub_resource type="GDScript" id="GDScript_riw2b"]
 script/source = "extends Sprite2D
@@ -27,7 +26,6 @@ _bundled = {
 }
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jvokg"]
-load_path = "res://.godot/imported/trampoline.svg-416bf490e391c25926b3010157a411ad.ctex"
 
 [sub_resource type="GDScript" id="GDScript_qo0cl"]
 script/source = "extends Sprite2D
