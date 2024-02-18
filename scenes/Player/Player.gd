@@ -44,7 +44,6 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("ui_left", "ui_right")
-	play_animations(direction)
 	if direction:
 		linear_velocity.x += direction * SPEED# * (1 if is_on_floor() else 0.5)
 	else:
@@ -64,13 +63,6 @@ func _physics_process(delta):
 		if not $RollingTheyBoulder.playing: $RollingTheyBoulder.play()
 	else:
 		$RollingTheyBoulder.stop()
-
-func play_animations(dir_x):
-	pass
-	if is_on_floor() and abs(dir_x) > 0.1:
-		$Sprite.shaking = true
-	else:
-		$Sprite.shaking = false
 
 func handle_tile_collision(tilemap_layer):
 	match tilemap_layer:
