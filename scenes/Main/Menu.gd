@@ -2,7 +2,7 @@ extends Control
 
 @onready var scene_switch = get_node("/root/SceneSwitch")
 @onready var scene_transition = preload("res://scenes/Main/SceneTransition.tscn")
-@onready var leaderboard_scene = preload("res://scenes/UI/Leaderboard.tscn")
+@onready var leaderboard_scene = preload("res://scenes/UI/LeaderBoard.tscn")
 
 var leaderboard_object;
 
