@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://carr2gknxwd58"]
+
+[node name="ScoreTemplate" type="Label"]
+theme_override_colors/font_color = Color(0.772549, 0.54902, 0.929412, 1)
+theme_override_font_sizes/font_size = 20
+text = "- Alan: 1:10"
+horizontal_alignment = 1
+vertical_alignment = 1

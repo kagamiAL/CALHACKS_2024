@@ -10,7 +10,7 @@ var map_node: Node2D;
 var player;
 var level_indicator;
 
-var current_level: int = 0;
+var current_level: int = 6;
 
 func set_up_maps_from_dir(path: String):
 	var regex = RegEx.new()

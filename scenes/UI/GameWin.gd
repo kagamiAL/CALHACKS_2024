@@ -4,12 +4,14 @@ extends Control
 
 @onready var time_label: Label = $CanvasLayer/VBoxContainer/Time as Label
 @onready var main_menu_button: Button = $CanvasLayer/VBoxContainer/Button as Button
+@onready var leaderboard_data = get_node("/root/LeaderboardData")
 
 var player_time: float = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	time_label.text = "Time: " + str(player_time)
+	leaderboard_data.append_leaderboard(player_time)
 	main_menu_button.button_down.connect(_on_main_menu_button_pressed)
 
 func _on_main_menu_button_pressed():

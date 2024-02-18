@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SceneSwitch="*res://SceneSwitch.gd"
+LeaderboardData="*res://LeaderboardData.gd"
 
 [display]
 
