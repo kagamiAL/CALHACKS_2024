@@ -8,7 +8,7 @@ var maps: Dictionary = {};
 var map_node: Node2D;
 var player;
 
-var current_level: int = 1;
+var current_level: int = 0;
 
 func set_up_maps_from_dir(path: String):
 	var regex = RegEx.new()
@@ -35,7 +35,7 @@ func load_current_level():
 
 #Returns true if player won game
 func next_level() -> bool:
-	if (current_level < maps.size()):
+	if (current_level < maps.size() - 1):
 		current_level += 1
 		return false
 	return true
@@ -54,8 +54,8 @@ func on_player_won():
 		player.queue_free()
 		map_node.queue_free()
 	else:
-		load_current_level()
 		player.reset()
+		load_current_level()
 
 func on_player_death():
 	var game_over = game_over_scene.instantiate()
