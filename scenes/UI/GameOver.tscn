@@ -47,7 +47,7 @@ vertical_alignment = 1
 
 [node name="Time" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.596078, 0.0117647, 0.854902, 1)
+theme_override_colors/font_color = Color(0.87451, 0, 0.945098, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 0

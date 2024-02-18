@@ -26,6 +26,7 @@ window/stretch/aspect="expand"
 
 [gui]
 
+theme/custom="res://res/theme.tres"
 theme/custom_font="res://res/FSEX302.ttf"
 theme/default_font_antialiasing=0
 theme/default_font_multichannel_signed_distance_field=true
