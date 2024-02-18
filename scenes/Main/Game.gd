@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var player_scene = preload("res://scenes/Player/Player.tscn") as PackedScene
 @onready var game_over_scene = preload("res://scenes/UI/GameOver.tscn") as PackedScene
+@onready var game_win_scene = preload("res://scenes/UI/GameWin.tscn") as PackedScene
 
 var maps: Dictionary = {};
 var map_node: Node2D;
@@ -32,11 +33,12 @@ func load_current_level():
 	map_node.z_index = -1
 	add_child(map_node)
 
-func next_level():
+#Returns true if player won game
+func next_level() -> bool:
 	if (current_level < maps.size()):
 		current_level += 1
-	else:
-		current_level = 1
+		return false
+	return true
 
 func get_current_level() -> int:
 	return current_level
@@ -45,9 +47,15 @@ func increment_level():
 	current_level += 1
 
 func on_player_won():
-	next_level()
-	load_current_level()
-	player.reset()
+	if next_level():
+		var game_win = game_win_scene.instantiate()
+		game_win.player_time = player.get_node("Camera2D/Time").text
+		add_child(game_win)
+		player.queue_free()
+		map_node.queue_free()
+	else:
+		load_current_level()
+		player.reset()
 
 func on_player_death():
 	var game_over = game_over_scene.instantiate()
