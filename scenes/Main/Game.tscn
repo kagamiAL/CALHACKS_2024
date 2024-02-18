@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2x1cyqmkoaw"]
+[gd_scene load_steps=4 format=3 uid="uid://c2x1cyqmkoaw"]
 
 [ext_resource type="Script" path="res://scenes/Main/Game.gd" id="1_0vo2w"]
 [ext_resource type="AudioStream" uid="uid://c8g1lohgwvrea" path="res://res/audio/MinSpaceInGameTheme.ogg" id="2_qwucb"]
+[ext_resource type="AudioStream" uid="uid://bqnqrgaqdpu16" path="res://res/audio/win.ogg" id="3_k0ybw"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_0vo2w")
@@ -9,3 +10,7 @@ script = ExtResource("1_0vo2w")
 [node name="SoundTrack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_qwucb")
 bus = &"SoundTrack"
+
+[node name="WinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_k0ybw")
+bus = &"SoundEffects"

@@ -53,6 +53,7 @@ func increment_level():
 	current_level += 1
 
 func on_player_won():
+	$WinSound.play()
 	if next_level():
 		var game_win = game_win_scene.instantiate()
 		game_win.player_time = player.get_node("Camera2D/Time").text
