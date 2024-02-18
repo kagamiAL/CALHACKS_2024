@@ -107,9 +107,11 @@ initial_velocity_max = 256.0
 gravity = Vector3(0, 98, 0)
 scale_min = 0.0
 alpha_curve = SubResource("CurveTexture_u6aw7")
+hue_variation_max = 0.03
 collision_mode = 1
 collision_friction = 0.0
-collision_bounce = 0.0
+collision_bounce = 0.05
+collision_use_scale = true
 
 [sub_resource type="Gradient" id="Gradient_3rast"]
 colors = PackedColorArray(0.803922, 0.0352941, 0.160784, 1, 0.840444, 0, 0.104624, 1)
@@ -195,6 +197,10 @@ amount = 256
 process_material = SubResource("ParticleProcessMaterial_gp1r7")
 texture = SubResource("GradientTexture2D_aq7ht")
 one_shot = true
+explosiveness = 0.4
+collision_base_size = 2.0
+trail_enabled = true
+trail_lifetime = 0.1
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 top_level = true
