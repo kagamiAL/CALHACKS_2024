@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://scenes/Player/Player.gd" id="1_3ef65"]
 [ext_resource type="Shader" path="res://scenes/Player/LensDistortion.gdshader" id="2_qwpdh"]
 [ext_resource type="Script" path="res://scenes/Player/Camera2D.gd" id="3_q7ypj"]
-[ext_resource type="AudioStream" path="res://res/audio/jump1.ogg" id="5_va2dx"]
-[ext_resource type="AudioStream" path="res://res/audio/contact1.ogg" id="6_rpob6"]
-[ext_resource type="AudioStream" path="res://res/audio/death1.ogg" id="7_khthc"]
+[ext_resource type="AudioStream" uid="uid://bemh1dfxd1b7l" path="res://res/audio/jump1.ogg" id="5_va2dx"]
+[ext_resource type="AudioStream" uid="uid://ch8k26eu6c4h1" path="res://res/audio/contact1.ogg" id="6_rpob6"]
+[ext_resource type="AudioStream" uid="uid://c5dxdavfddbrp" path="res://res/audio/death1.ogg" id="7_khthc"]
 [ext_resource type="Script" path="res://scenes/Player/Sprite.gd" id="18_wu17r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ju427"]
@@ -124,7 +124,7 @@ height = 5
 fill_from = Vector2(1, 1)
 
 [node name="Player" type="RigidBody2D" groups=["player"]]
-continuous_cd = 2
+continuous_cd = 1
 max_contacts_reported = 3
 contact_monitor = true
 script = ExtResource("1_3ef65")

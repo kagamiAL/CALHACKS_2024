@@ -78,3 +78,4 @@ func _ready():
 	add_child(player)
 	player.won.connect(on_player_won)
 	player.died.connect(on_player_death)
+	$SoundTrack.play()
