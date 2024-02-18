@@ -16,3 +16,37 @@ layer_2/name = "Spikes"
 layer_2/tile_data = PackedInt32Array(1114176, 65537, 0, 1114177, 65537, 0, 1114178, 65537, 0, 1114179, 65537, 0, 1114180, 65537, 0)
 layer_3/name = "Goals"
 layer_3/tile_data = PackedInt32Array(1310805, 131073, 0)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1155.0
+offset_top = -139.0
+offset_right = 1195.0
+offset_bottom = -99.0
+scale = Vector2(15.1219, 9.28586)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -119.657
+offset_top = 1.64581
+offset_right = 128.343
+offset_bottom = 74.6458
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.197047, 0.309692)
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "←/A: Move right
+→/D: Move left
+Space/W: Jump 
+(Jumping makes you lose speed!)"
+horizontal_alignment = 1
+vertical_alignment = 1
