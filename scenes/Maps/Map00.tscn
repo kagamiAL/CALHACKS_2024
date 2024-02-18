@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhbv58uuvnp6o"]
+[gd_scene load_steps=3 format=3 uid="uid://dwravqmapaab0"]
 
 [ext_resource type="TileSet" uid="uid://83e6r7d4e13" path="res://scenes/Tiles/TileMap.tres" id="1_0go4g"]
+[ext_resource type="Texture2D" uid="uid://n32hsqeasyep" path="res://res/tiles.svg" id="2_oaggl"]
 
 [node name="Map01" type="Node2D"]
 
@@ -16,3 +17,29 @@ layer_2/name = "Spikes"
 layer_2/tile_data = PackedInt32Array(1114176, 65537, 0, 1114177, 65537, 0, 1114178, 65537, 0, 1114179, 65537, 0, 1114180, 65537, 0)
 layer_3/name = "Goals"
 layer_3/tile_data = PackedInt32Array(1310805, 131073, 0)
+
+[node name="Control" type="Control" parent="."]
+top_level = true
+layout_mode = 3
+anchors_preset = 0
+offset_top = 151.0
+offset_right = 40.0
+offset_bottom = 191.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 2
+offset_right = 260.0
+offset_bottom = 87.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "ad/arrow keys: move
+don't jump (w/space)
+reach this"
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Control"]
+position = Vector2(-27, 88)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_oaggl")
+region_enabled = true
+region_rect = Rect2(128, 0, 64, 64)

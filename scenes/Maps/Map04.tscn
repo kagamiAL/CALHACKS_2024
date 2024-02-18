@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://66sj21vum5pq"]
+[gd_scene load_steps=2 format=3 uid="uid://cvu238xomputk"]
 
 [ext_resource type="TileSet" uid="uid://83e6r7d4e13" path="res://scenes/Tiles/TileMap.tres" id="1_bck4m"]
 
-[node name="Map03" type="Node2D"]
+[node name="Map04" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(0.987788, 1.02661)
