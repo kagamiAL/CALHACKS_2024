@@ -28,6 +28,7 @@ func load_current_level():
 	if map_node:
 		map_node.queue_free()
 	map_node = maps[current_level].instantiate()
+	map_node.z_index = -1
 	add_child(map_node)
 
 func next_level():
@@ -42,9 +43,15 @@ func get_current_level() -> int:
 func increment_level():
 	current_level += 1
 
+func on_player_won():
+	next_level()
+	load_current_level()
+	player.reset()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_up_maps_from_dir("res://scenes/Maps")
 	load_current_level()
 	player = player_scene.instantiate()
 	add_child(player)
+	player.won.connect(on_player_won)
