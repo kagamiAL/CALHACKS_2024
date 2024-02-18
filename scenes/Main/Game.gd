@@ -31,6 +31,10 @@ func set_up_maps_from_dir(path: String):
 func load_current_level():
 	if map_node:
 		map_node.queue_free()
+		await map_node.tree_exited
+	if player:
+		player.reset()
+		await get_tree().physics_frame
 	map_node = maps[current_level].instantiate()
 	map_node.z_index = -1
 	add_child(map_node)
@@ -57,7 +61,6 @@ func on_player_won():
 		map_node.queue_free()
 	else:
 		level_indicator.change_indicated_level(current_level)
-		player.reset()
 		load_current_level()
 
 func on_player_death():
