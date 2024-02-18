@@ -1,124 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://d3n5jhnl7phsy"]
+[gd_scene load_steps=3 format=3 uid="uid://d3n5jhnl7phsy"]
 
-[ext_resource type="Texture2D" uid="uid://n32hsqeasyep" path="res://res/tiles.svg" id="1_wjcys"]
+[ext_resource type="TileSet" uid="uid://83e6r7d4e13" path="res://scenes/Tiles/TileMap.tres" id="1_jran8"]
 [ext_resource type="PackedScene" uid="uid://cv1b38h0riay4" path="res://scenes/Player/Player.tscn" id="2_hrtao"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yloie"]
-load_path = "res://.godot/imported/spike.svg-e1e0029ad86b602f1a94ea86c1c5f699.ctex"
-
-[sub_resource type="GDScript" id="GDScript_riw2b"]
-script/source = "extends Sprite2D
-
-func _on_area_2d_body_entered(body):
-	if body.is_in_group(\"player\"):
-		print(\"Kill player\")
-"
-
-[sub_resource type="PackedScene" id="PackedScene_j3r37"]
-_bundled = {
-"conn_count": 1,
-"conns": PackedInt32Array(1, 0, 8, 7, 2, 0, 0),
-"editable_instances": [],
-"names": PackedStringArray("Spike", "texture", "script", "Sprite2D", "Area2D", "CollisionPolygon2D", "polygon", "_on_area_2d_body_entered", "body_entered"),
-"node_count": 3,
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 0, 0, 1, 0, 5, 5, -1, 1, 6, 2, 0),
-"variants": [SubResource("CompressedTexture2D_yloie"), SubResource("GDScript_riw2b"), PackedVector2Array(-1, -31, -32, 32, 33, 32)],
-"version": 3
-}
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jvokg"]
-load_path = "res://.godot/imported/trampoline.svg-416bf490e391c25926b3010157a411ad.ctex"
-
-[sub_resource type="GDScript" id="GDScript_qo0cl"]
-script/source = "extends Sprite2D
-
-@export var bounce = 0
-"
-
-[sub_resource type="PackedScene" id="PackedScene_jdfpi"]
-_bundled = {
-"conn_count": 1,
-"conns": PackedInt32Array(1, 0, 10, 9, 2, 0, 0),
-"editable_instances": [],
-"names": PackedStringArray("Trampoline", "texture", "script", "bounce", "trampolines", "Sprite2D", "RigidBody2D", "CollisionPolygon2D", "polygon", "_on_rigid_body_2d_body_entered", "body_entered"),
-"node_count": 3,
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 5, 0, -1, 3, 1, 0, 2, 1, 3, 2, 1, 4, 0, 0, 6, 6, -1, 0, 0, 1, 0, 7, 7, -1, 1, 8, 3, 0),
-"variants": [SubResource("CompressedTexture2D_jvokg"), SubResource("GDScript_qo0cl"), 800, PackedVector2Array(-32, 16, 32, 16, 32, 32, -32, 32)],
-"version": 3
-}
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3a1tj"]
-size = Vector2(64, 64)
-
-[sub_resource type="PackedScene" id="PackedScene_xicwd"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("Block", "color", "polygon", "Polygon2D", "RigidBody2D", "can_sleep", "CollisionShape2D", "scale", "shape"),
-"node_count": 3,
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 1, 5, 2, 0, 1, 0, 6, 6, -1, 2, 7, 3, 8, 4, 0),
-"variants": [Color(0, 0, 0, 1), PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32), false, Vector2(1, 1), SubResource("RectangleShape2D_3a1tj")],
-"version": 3
-}
-
-[sub_resource type="PackedScene" id="PackedScene_b3tqa"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("Block", "color", "polygon", "Polygon2D", "RigidBody2D", "CollisionPolygon2D"),
-"node_count": 3,
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 0, 0, 1, 0, 5, 5, -1, 1, 2, 1, 0),
-"variants": [Color(0, 0, 0, 1), PackedVector2Array(-32, -32, -32, 32, 32, 32)],
-"version": 3
-}
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_0gk8t"]
-scenes/1/scene = SubResource("PackedScene_j3r37")
-scenes/2/scene = SubResource("PackedScene_jdfpi")
-scenes/3/scene = SubResource("PackedScene_xicwd")
-scenes/4/scene = SubResource("PackedScene_b3tqa")
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q7t2v"]
-texture = ExtResource("1_wjcys")
-texture_region_size = Vector2i(64, 64)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-1:1/0 = 0
-1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:1/0/physics_layer_0/angular_velocity = 0.0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, 32, -32, 32)
-0:1/0 = 0
-0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:1/0/physics_layer_0/angular_velocity = 0.0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 32, -32, 21.625, -30.25, 19, -26.5, 16.25, 25.25, 16.125, 29.375, 18.125, 32, 21.625, 32, 32)
-1:0/0 = 0
-1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:0/0/physics_layer_0/angular_velocity = 0.0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.5, -32, 32, 32, -32, 32)
-2:0/0 = 0
-2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:0/0/physics_layer_0/angular_velocity = 0.0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-
-[sub_resource type="TileSet" id="TileSet_eov44"]
-tile_size = Vector2i(64, 64)
-physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetScenesCollectionSource_0gk8t")
-sources/1 = SubResource("TileSetAtlasSource_q7t2v")
 
 [node name="Map01" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(0.987788, 1.02661)
-tile_set = SubResource("TileSet_eov44")
+tile_set = ExtResource("1_jran8")
 format = 2
 layer_0/name = "Base"
 layer_0/tile_data = PackedInt32Array(327680, 1, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 393220, 1, 0, 393219, 1, 0, 393218, 1, 0, 393217, 1, 0, 393216, 1, 0, 393221, 1, 0, 458757, 1, 0, 458756, 1, 0, 458755, 1, 0, 458754, 1, 0, 458753, 1, 0, 458752, 1, 0, 524288, 1, 0, 589824, 1, 0, 589825, 1, 0, 589826, 1, 0, 589827, 1, 0, 589828, 1, 0, 589829, 1, 0, 524293, 1, 0, 524292, 1, 0, 524291, 1, 0, 524290, 1, 0, 524289, 1, 0, 393222, 1, 0, 393223, 1, 0, 393224, 1, 0, 393225, 1, 0, 458761, 1, 0, 524297, 1, 0, 589833, 1, 0, 589832, 1, 0, 589831, 1, 0, 589830, 1, 0, 524294, 1, 0, 458758, 1, 0, 458759, 1, 0, 458760, 1, 0, 524296, 1, 0, 524295, 1, 0, 458762, 1, 0, 458763, 1, 0, 458764, 1, 0, 524301, 1, 0, 589837, 1, 0, 589836, 1, 0, 589835, 1, 0, 589834, 1, 0, 524298, 1, 0, 524299, 1, 0, 524300, 1, 0, 524302, 1, 0, 589838, 1, 0, 589839, 1, 0, 589840, 1, 0, 589841, 1, 0, 524305, 1, 0, 458769, 1, 0, 458768, 1, 0, 524303, 1, 0, 524304, 1, 0, 393234, 1, 0, 393235, 1, 0, 393236, 1, 0, 393237, 1, 0, 393238, 1, 0, 458774, 1, 0, 524310, 1, 0, 589846, 1, 0, 589845, 1, 0, 589844, 1, 0, 589843, 1, 0, 589842, 1, 0, 524306, 1, 0, 458770, 1, 0, 458771, 1, 0, 458772, 1, 0, 524308, 1, 0, 524307, 1, 0, 458773, 1, 0, 524309, 1, 0, 327701, 1, 0, 327702, 1, 0, 327703, 1, 0, 262167, 1, 0, 393239, 1, 0, 458775, 1, 0, 524311, 1, 0, 589847, 1, 0, 589848, 1, 0, 524312, 1, 0, 458776, 1, 0, 393240, 1, 0, 327704, 1, 0, 262168, 1, 0, 262169, 1, 0, 327705, 1, 0, 393241, 1, 0, 458777, 1, 0, 524313, 1, 0, 589849, 1, 0, 262170, 1, 0, 327706, 1, 0, 393242, 1, 0, 458778, 1, 0, 524314, 1, 0, 589850, 1, 0, 589851, 1, 0, 524315, 1, 0, 458779, 1, 0, 393243, 1, 0, 327707, 1, 0, 262171, 1, 0, 262172, 1, 0, 327708, 1, 0, 393244, 1, 0, 458780, 1, 0, 524316, 1, 0, 589852, 1, 0, 589853, 1, 0, 524317, 1, 0, 458781, 1, 0, 393245, 1, 0, 327709, 1, 0, 262173, 1, 0, 262174, 1, 0, 327710, 1, 0, 393246, 1, 0, 458782, 1, 0, 524318, 1, 0, 589854, 1, 0, 589855, 1, 0, 589856, 1, 0, 524320, 1, 0, 458784, 1, 0, 393248, 1, 0, 327712, 1, 0, 262176, 1, 0, 196640, 1, 0, 131104, 1, 0, 65568, 1, 0, 327711, 1, 0, 393247, 1, 0, 458783, 1, 0, 262175, 1, 0, 524319, 1, 0, 393215, 1, 0, 458751, 1, 0, 524287, 1, 0, 589823, 1, 0, 655359, 1, 0, 655358, 1, 0, 589822, 1, 0, 524286, 1, 0, 458750, 1, 0, 393214, 1, 0, 393213, 1, 0, 327677, 1, 0, 262141, 1, 0, 262140, 1, 0, 196604, 1, 0, 131068, 1, 0, 131067, 1, 0, 196603, 1, 0, 262139, 1, 0, 327675, 1, 0, 393211, 1, 0, 458748, 1, 0, 524284, 1, 0, 589820, 1, 0, 655356, 1, 0, 655357, 1, 0, 524285, 1, 0, 458749, 1, 0, 393212, 1, 0, 327676, 1, 0, 589821, 1, 0, 655355, 1, 0, 589819, 1, 0, 524283, 1, 0, 458747, 1, 0, 65531, 1, 0, -5, 1, 0, -65541, 1, 0, -131077, 1, 0, -196613, 1, 0, 327678, 65537, 1, 196605, 65537, 1, 65532, 65537, 1, 327686, 65537, 1, 393226, 65537, 1, 458765, 65537, 1, 458767, 65537, 268435457, 393233, 65537, 268435457, 327700, 65537, 268435457, 262166, 65537, 268435457)

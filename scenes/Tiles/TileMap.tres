@@ -1,0 +1,114 @@
+[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://83e6r7d4e13"]
+
+[ext_resource type="Texture2D" uid="uid://n32hsqeasyep" path="res://res/tiles.svg" id="1_bk6nc"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yloie"]
+load_path = "res://.godot/imported/spike.svg-e1e0029ad86b602f1a94ea86c1c5f699.ctex"
+
+[sub_resource type="GDScript" id="GDScript_riw2b"]
+script/source = "extends Sprite2D
+
+func _on_area_2d_body_entered(body):
+	if body.is_in_group(\"player\"):
+		print(\"Kill player\")
+"
+
+[sub_resource type="PackedScene" id="PackedScene_j3r37"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(1, 0, 8, 7, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Spike", "texture", "script", "Sprite2D", "Area2D", "CollisionPolygon2D", "polygon", "_on_area_2d_body_entered", "body_entered"),
+"node_count": 3,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 0, 0, 1, 0, 5, 5, -1, 1, 6, 2, 0),
+"variants": [SubResource("CompressedTexture2D_yloie"), SubResource("GDScript_riw2b"), PackedVector2Array(-1, -31, -32, 32, 33, 32)],
+"version": 3
+}
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jvokg"]
+load_path = "res://.godot/imported/trampoline.svg-416bf490e391c25926b3010157a411ad.ctex"
+
+[sub_resource type="GDScript" id="GDScript_qo0cl"]
+script/source = "extends Sprite2D
+
+@export var bounce = 0
+"
+
+[sub_resource type="PackedScene" id="PackedScene_jdfpi"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(1, 0, 10, 9, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Trampoline", "texture", "script", "bounce", "trampolines", "Sprite2D", "RigidBody2D", "CollisionPolygon2D", "polygon", "_on_rigid_body_2d_body_entered", "body_entered"),
+"node_count": 3,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 5, 0, -1, 3, 1, 0, 2, 1, 3, 2, 1, 4, 0, 0, 6, 6, -1, 0, 0, 1, 0, 7, 7, -1, 1, 8, 3, 0),
+"variants": [SubResource("CompressedTexture2D_jvokg"), SubResource("GDScript_qo0cl"), 800, PackedVector2Array(-32, 16, 32, 16, 32, 32, -32, 32)],
+"version": 3
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3a1tj"]
+size = Vector2(64, 64)
+
+[sub_resource type="PackedScene" id="PackedScene_xicwd"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Block", "color", "polygon", "Polygon2D", "RigidBody2D", "can_sleep", "CollisionShape2D", "scale", "shape"),
+"node_count": 3,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 1, 5, 2, 0, 1, 0, 6, 6, -1, 2, 7, 3, 8, 4, 0),
+"variants": [Color(0, 0, 0, 1), PackedVector2Array(-32, -32, -32, 32, 32, 32, 32, -32), false, Vector2(1, 1), SubResource("RectangleShape2D_3a1tj")],
+"version": 3
+}
+
+[sub_resource type="PackedScene" id="PackedScene_b3tqa"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Block", "color", "polygon", "Polygon2D", "RigidBody2D", "CollisionPolygon2D"),
+"node_count": 3,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 0, 0, 1, 0, 5, 5, -1, 1, 2, 1, 0),
+"variants": [Color(0, 0, 0, 1), PackedVector2Array(-32, -32, -32, 32, 32, 32)],
+"version": 3
+}
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_0gk8t"]
+scenes/1/scene = SubResource("PackedScene_j3r37")
+scenes/2/scene = SubResource("PackedScene_jdfpi")
+scenes/3/scene = SubResource("PackedScene_xicwd")
+scenes/4/scene = SubResource("PackedScene_b3tqa")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q7t2v"]
+texture = ExtResource("1_bk6nc")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, 32, -32, 32)
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 32, -32, 21.625, -30.25, 19, -26.5, 16.25, 25.25, 16.125, 29.375, 18.125, 32, 21.625, 32, 32)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.5, -32, 32, 32, -32, 32)
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[resource]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetScenesCollectionSource_0gk8t")
+sources/1 = SubResource("TileSetAtlasSource_q7t2v")
