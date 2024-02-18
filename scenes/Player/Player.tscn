@@ -1,22 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://cv1b38h0riay4"]
+[gd_scene load_steps=15 format=3 uid="uid://cv1b38h0riay4"]
 
 [ext_resource type="Script" path="res://scenes/Player/Player.gd" id="1_3ef65"]
 [ext_resource type="Shader" path="res://scenes/Player/LensDistortion.gdshader" id="2_qwpdh"]
-[ext_resource type="Shader" path="res://scenes/Player/Player.gdshader" id="2_vckes"]
-[ext_resource type="Texture2D" uid="uid://erjqmo538duv" path="res://res/Player Animation/Ball Animation/Ball_Move1.svg" id="3_8xt8l"]
-[ext_resource type="Texture2D" uid="uid://b42byijk21wca" path="res://res/Player Animation/Ball Animation/BallAnimationJump_1.svg" id="4_e45ea"]
-[ext_resource type="Texture2D" uid="uid://crkrn1p3exyfh" path="res://res/Player Animation/Ball Animation/BallAnimationJump_2.svg" id="5_4rfuw"]
-[ext_resource type="Texture2D" uid="uid://c625q76d1t1jf" path="res://res/Player Animation/Ball Animation/BallAnimationJump_3.svg" id="6_tj36t"]
-[ext_resource type="Texture2D" uid="uid://cf0hdhmufitqi" path="res://res/Player Animation/Ball Animation/BallAnimationJump_4.svg" id="7_k8dee"]
-[ext_resource type="Texture2D" uid="uid://oxy2kft8bd3v" path="res://res/Player Animation/Ball Animation/BallAnimationJump_5.svg" id="8_k6lb8"]
-[ext_resource type="Texture2D" uid="uid://bqm2alkhrb5w2" path="res://res/Player Animation/Ball Animation/BallAnimationJump_6.svg" id="9_4g7g3"]
-[ext_resource type="Texture2D" uid="uid://drr1fveaclrkg" path="res://res/Player Animation/Ball Animation/BallAnimationJump_7.svg" id="10_ein48"]
-[ext_resource type="Texture2D" uid="uid://dsnpbrc73uo6k" path="res://res/Player Animation/Ball Animation/BallAnimationJump_8.svg" id="11_m6lxb"]
-[ext_resource type="Texture2D" uid="uid://cfyofk5i245ny" path="res://res/Player Animation/Ball Animation/BallAnimationJump_9.svg" id="12_pwxr2"]
-[ext_resource type="Texture2D" uid="uid://bn51xog055rgw" path="res://res/Player Animation/Ball Animation/BallAnimationJump_10.svg" id="13_l3ebf"]
-[ext_resource type="Texture2D" uid="uid://i3uk2mnr1w1f" path="res://res/Player Animation/Ball Animation/BallAnimationJump_11.svg" id="14_prae1"]
-[ext_resource type="Texture2D" uid="uid://bey77r2haai03" path="res://res/Player Animation/Ball Animation/BallAnimationJump_12.svg" id="15_q2qia"]
-[ext_resource type="Texture2D" uid="uid://csnrbjrk1qp6g" path="res://res/Player Animation/Ball Animation/Ball_Move2.svg" id="16_tab8u"]
+[ext_resource type="Script" path="res://scenes/Player/Sprite.gd" id="18_wu17r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2koi"]
 content_margin_left = 16.0
@@ -35,93 +21,107 @@ shadow_offset = Vector2(3, 3)
 [sub_resource type="CircleShape2D" id="CircleShape2D_hjcw1"]
 radius = 23.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_x5svd"]
-shader = ExtResource("2_vckes")
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ks1a8"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_8xt8l")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_e45ea")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_4rfuw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_tj36t")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_k8dee")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_k6lb8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_4g7g3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_ein48")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_m6lxb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_pwxr2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_l3ebf")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_prae1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_q2qia")
-}],
-"loop": false,
-"name": &"jump",
-"speed": 30.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_8xt8l")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_tab8u")
-}],
-"loop": true,
-"name": &"move_backward",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_8xt8l")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_tab8u")
-}],
-"loop": true,
-"name": &"move_forward",
-"speed": 12.0
-}]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ju427"]
 shader = ExtResource("2_qwpdh")
 shader_parameter/dispersion = 0.02
 shader_parameter/distort = 0.01
 shader_parameter/blur_amount = 0.02
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="Animation" id="Animation_gp65j"]
+resource_name = "jump"
+length = 0.5
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.8, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.9, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.05, 0.15, 0.2, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.9, -0.25, 0, 0.25, 0, 0.8, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.9, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.25, 0.3, 0.35)
+}
+
+[sub_resource type="Animation" id="Animation_ay27k"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dy76i"]
+_data = {
+"RESET": SubResource("Animation_ay27k"),
+"jump": SubResource("Animation_gp65j")
+}
+
+[sub_resource type="Curve" id="Curve_rmnny"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_u6aw7"]
+curve = SubResource("Curve_rmnny")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gp1r7"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 23.0
+direction = Vector3(0, 0, 0)
+spread = 48.0
+initial_velocity_min = 128.0
+initial_velocity_max = 256.0
+gravity = Vector3(0, 98, 0)
+scale_min = 0.0
+alpha_curve = SubResource("CurveTexture_u6aw7")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="Gradient" id="Gradient_3rast"]
+colors = PackedColorArray(0.803922, 0.0352941, 0.160784, 1, 0.840444, 0, 0.104624, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aq7ht"]
+gradient = SubResource("Gradient_3rast")
+width = 5
+height = 5
+fill_from = Vector2(1, 1)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+floor_stop_on_slope = false
 floor_constant_speed = true
 floor_max_angle = 1.48353
 script = ExtResource("1_3ef65")
+trampoline_bounce_amt = 800
 
 [node name="Time" type="Label" parent="."]
 offset_left = -134.0
@@ -139,12 +139,11 @@ vertical_alignment = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_hjcw1")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_x5svd")
-position = Vector2(0, -10)
-skew = 0.0314159
-sprite_frames = SubResource("SpriteFrames_ks1a8")
-autoplay = "default"
+[node name="Sprite" type="Node2D" parent="."]
+script = ExtResource("18_wu17r")
+radius = 23.0
+color = Color(1, 0.06, 0.0756664, 1)
+max_shake = 0.6
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -162,3 +161,15 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dy76i")
+}
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 256
+process_material = SubResource("ParticleProcessMaterial_gp1r7")
+texture = SubResource("GradientTexture2D_aq7ht")
+one_shot = true
