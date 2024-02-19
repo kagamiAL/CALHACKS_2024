@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhju5n4ymgoto"]
+[gd_scene load_steps=8 format=3 uid="uid://bhju5n4ymgoto"]
 
 [ext_resource type="Script" path="res://scenes/Main/Menu.gd" id="1_r3bay"]
 [ext_resource type="AudioStream" uid="uid://bxr6qqqx2lq5d" path="res://res/audio/MainMenuTheme.ogg" id="3_aul47"]
+[ext_resource type="PackedScene" uid="uid://inas5xn4h6tb" path="res://scenes/UI/LeaderBoard.tscn" id="3_mcylv"]
 [ext_resource type="TileSet" uid="uid://83e6r7d4e13" path="res://scenes/Tiles/TileMap.tres" id="3_udspc"]
 
 [sub_resource type="SystemFont" id="SystemFont_nlf74"]
@@ -80,10 +81,21 @@ theme_override_fonts/font = SubResource("SystemFont_8r0ef")
 theme_override_font_sizes/font_size = 24
 text = "Quit"
 
+[node name="LeaderBoard" parent="." instance=ExtResource("3_mcylv")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_right = 144.0
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_aul47")
 autoplay = true
 
-[connection signal="button_down" from="VBoxContainer/Play" to="." method="_on_play_button_down"]
-[connection signal="button_down" from="VBoxContainer/Leaderboard" to="." method="_on_leaderboard_button_down"]
-[connection signal="button_down" from="VBoxContainer/Quit" to="." method="_on_quit_button_down"]
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Leaderboard" to="." method="_on_leaderboard_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

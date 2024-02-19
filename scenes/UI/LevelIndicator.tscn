@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c68igqu6e4wp6"]
+[gd_scene load_steps=7 format=3 uid="uid://c68igqu6e4wp6"]
 
 [ext_resource type="Script" path="res://scenes/UI/LevelIndicator.gd" id="1_ogqmj"]
 
@@ -15,6 +15,15 @@ content_margin_top = 10.0
 content_margin_right = 15.0
 content_margin_bottom = 10.0
 texture = SubResource("GradientTexture1D_gqxkh")
+
+[sub_resource type="InputEventKey" id="InputEventKey_van67"]
+device = -1
+pressed = true
+keycode = 82
+unicode = 114
+
+[sub_resource type="Shortcut" id="Shortcut_mosoo"]
+events = [SubResource("InputEventKey_van67")]
 
 [node name="LevelIndicator" type="Control"]
 layout_mode = 3
@@ -39,6 +48,7 @@ theme_override_constants/separation = 30
 
 [node name="Restart" type="Button" parent="CanvasLayer/PanelContainer/HBoxContainer"]
 layout_mode = 2
+shortcut = SubResource("Shortcut_mosoo")
 text = "Restart"
 
 [node name="Level" type="Label" parent="CanvasLayer/PanelContainer/HBoxContainer"]

@@ -2,25 +2,22 @@ extends Control
 
 @onready var scene_switch = get_node("/root/SceneSwitch")
 @onready var scene_transition = load("res://scenes/Main/SceneTransition.tscn")
-@onready var leaderboard_scene = load("res://scenes/UI/LeaderBoard.tscn")
 
 var leaderboard_object;
 
 func _ready():
-	leaderboard_object = leaderboard_scene.instantiate()
-	leaderboard_object.visible = false
-	add_child(leaderboard_object)
+	$%Play.grab_focus()
 
-func _on_play_button_down():
+func _on_play_pressed():
 	var transition = scene_transition.instantiate()
 	add_child(transition)
 	await transition.play_transition()
 	transition.queue_free()
 	scene_switch.goto_scene("res://scenes/Main/Game.tscn")
 
-func _on_quit_button_down():
+func _on_quit_pressed():
 	get_tree().quit()
 
-func _on_leaderboard_button_down():
-	leaderboard_object._update_leaderboard()
-	leaderboard_object.visible = true
+func _on_leaderboard_pressed():
+	$LeaderBoard._update_leaderboard()
+	$LeaderBoard.visible = true
