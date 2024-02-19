@@ -19,7 +19,9 @@ layer_3/name = "Goals"
 layer_3/tile_data = PackedInt32Array(1310805, 131073, 0)
 
 [node name="Control" type="Control" parent="."]
+show_behind_parent = true
 top_level = true
+z_index = -2
 layout_mode = 3
 anchors_preset = 0
 offset_top = 151.0

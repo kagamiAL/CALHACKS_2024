@@ -89,10 +89,12 @@ func kill():
 	set_process(false)
 	set_physics_process(false)
 	set_deferred("freeze", true)
+	linear_velocity = Vector2()
 	# Hide sprite
 	$Sprite.hide()
 	$%Time.hide()
 	# Play death sound
+	$RollingTheyBoulder.stop()
 	$DeathAudio.play()
 	# All our food keeps BLOWING UP
 	$GPUParticles2D.emitting = true

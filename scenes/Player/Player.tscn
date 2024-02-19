@@ -14,21 +14,21 @@ friction = 0.6
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ju427"]
 shader = ExtResource("2_qwpdh")
-shader_parameter/dispersion = 0.02
-shader_parameter/distort = 0.01
-shader_parameter/blur_amount = 0.02
+shader_parameter/dispersion = 0.01
+shader_parameter/distort = 0.02
+shader_parameter/blur_amount = 0.01
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2koi"]
 content_margin_left = 16.0
 content_margin_right = 16.0
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.913725, 0.937255, 0.92549, 1)
 skew = Vector2(0.4, 0)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-shadow_color = Color(0, 0, 0, 1)
+border_color = Color(0.105882, 0.121569, 0.168627, 1)
+shadow_color = Color(0.105882, 0.121569, 0.168627, 1)
 shadow_size = 1
 shadow_offset = Vector2(3, 3)
 
@@ -141,16 +141,18 @@ top_level = true
 script = ExtResource("3_q7ypj")
 move_speed = 0.281
 
-[node name="ColorRect" type="ColorRect" parent="Camera2D"]
-visible = false
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+layer = 0
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
 material = SubResource("ShaderMaterial_ju427")
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -575.0
-offset_top = -324.0
-offset_right = 577.0
-offset_bottom = 324.0
+offset_left = -49.0
+offset_top = -50.0
+offset_right = 51.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -171,7 +173,7 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.105882, 0.121569, 0.168627, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_r2koi")
@@ -190,7 +192,7 @@ shape = SubResource("CircleShape2D_hjcw1")
 [node name="Sprite" type="Node2D" parent="."]
 script = ExtResource("18_wu17r")
 radius = 23.0
-color = Color(1, 0.211765, 0.211765, 1)
+color = Color(0.839216, 0.270588, 0.270588, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -1,6 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://c68igqu6e4wp6"]
+[gd_scene load_steps=7 format=3 uid="uid://c68igqu6e4wp6"]
 
 [ext_resource type="Script" path="res://scenes/UI/LevelIndicator.gd" id="1_ogqmj"]
+
+[sub_resource type="Gradient" id="Gradient_0xtuv"]
+offsets = PackedFloat32Array(0, 0.262626)
+colors = PackedColorArray(0, 0, 0, 0.501961, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gqxkh"]
+gradient = SubResource("Gradient_0xtuv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u460k"]
+content_margin_left = 15.0
+content_margin_top = 10.0
+content_margin_right = 15.0
+content_margin_bottom = 10.0
+texture = SubResource("GradientTexture1D_gqxkh")
+
+[sub_resource type="InputEventKey" id="InputEventKey_van67"]
+device = -1
+pressed = true
+keycode = 82
+unicode = 114
+
+[sub_resource type="Shortcut" id="Shortcut_mosoo"]
+events = [SubResource("InputEventKey_van67")]
 
 [node name="LevelIndicator" type="Control"]
 layout_mode = 3
@@ -12,25 +35,33 @@ script = ExtResource("1_ogqmj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -80.0
-offset_top = 33.0
-offset_right = 80.0
-offset_bottom = 74.0
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 51.0
 grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_u460k")
 
-[node name="Level" type="Label" parent="CanvasLayer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Restart" type="Button" parent="CanvasLayer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_mosoo")
+text = "Restart"
+
+[node name="Level" type="Label" parent="CanvasLayer/PanelContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.223529, 0.627451, 0.792157, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.380392, 0.364706, 0.917647, 1)
+theme_override_colors/font_shadow_color = Color(0.105882, 0.121569, 0.168627, 1)
+theme_override_colors/font_outline_color = Color(0.105882, 0.121569, 0.168627, 1)
 theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 4
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 32
 text = "Level 0
 "
+
+[connection signal="pressed" from="CanvasLayer/PanelContainer/HBoxContainer/Restart" to="." method="_on_restart_pressed"]

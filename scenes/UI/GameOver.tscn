@@ -32,9 +32,9 @@ theme_override_constants/separation = 25
 
 [node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.913725, 0.937255, 0.92549, 1)
+theme_override_colors/font_shadow_color = Color(0.105882, 0.121569, 0.168627, 1)
+theme_override_colors/font_outline_color = Color(0.105882, 0.121569, 0.168627, 1)
 theme_override_constants/shadow_offset_x = 8
 theme_override_constants/shadow_offset_y = 8
 theme_override_constants/outline_size = 20
@@ -47,9 +47,9 @@ vertical_alignment = 1
 
 [node name="Time" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.87451, 0, 0.945098, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.380392, 0.364706, 0.917647, 1)
+theme_override_colors/font_shadow_color = Color(0.105882, 0.121569, 0.168627, 1)
+theme_override_colors/font_outline_color = Color(0.105882, 0.121569, 0.168627, 1)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 4
 theme_override_constants/outline_size = 4
@@ -58,10 +58,17 @@ text = "Time: 1:00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="Restart" type="Button" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+theme_override_font_sizes/font_size = 50
+text = "Restart"
+icon_alignment = 1
+
+[node name="MainMenu" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Main menu"
 icon_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

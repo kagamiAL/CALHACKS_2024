@@ -5,25 +5,25 @@ content_margin_left = 10.0
 content_margin_top = 5.0
 content_margin_right = 10.0
 content_margin_bottom = 5.0
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0.105882, 0.121569, 0.168627, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
+border_color = Color(0.541176, 0.658824, 0.803922, 1)
 shadow_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbkk8"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5xq8u"]
 content_margin_left = 10.0
 content_margin_top = 5.0
 content_margin_right = 10.0
 content_margin_bottom = 5.0
-bg_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
+bg_color = Color(0.105882, 0.121569, 0.168627, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.741176, 0.741176, 0.741176, 1)
+border_color = Color(0.913725, 0.937255, 0.92549, 1)
 shadow_color = Color(0, 0, 0, 1)
 shadow_size = 1
 shadow_offset = Vector2(2, 2)
@@ -33,14 +33,14 @@ content_margin_left = 10.0
 content_margin_top = 5.0
 content_margin_right = 10.0
 content_margin_bottom = 5.0
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0.105882, 0.121569, 0.168627, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.741176, 0.741176, 0.741176, 1)
+border_color = Color(0.913725, 0.937255, 0.92549, 1)
 shadow_color = Color(0, 0, 0, 1)
-shadow_size = 1
+shadow_size = 2
 shadow_offset = Vector2(2, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nsx7m"]
@@ -48,16 +48,16 @@ content_margin_left = 10.0
 content_margin_top = 5.0
 content_margin_right = 10.0
 content_margin_bottom = 5.0
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0.105882, 0.121569, 0.168627, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.741176, 0.741176, 0.741176, 1)
+border_color = Color(0.278431, 0.364706, 0.505882, 1)
 shadow_color = Color(0, 0, 0, 1)
 
 [resource]
 Button/styles/focus = SubResource("StyleBoxFlat_7krl2")
-Button/styles/hover = SubResource("StyleBoxFlat_qbkk8")
+Button/styles/hover = SubResource("StyleBoxFlat_5xq8u")
 Button/styles/normal = SubResource("StyleBoxFlat_wuosi")
 Button/styles/pressed = SubResource("StyleBoxFlat_nsx7m")
