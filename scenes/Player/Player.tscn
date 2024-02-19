@@ -14,9 +14,9 @@ friction = 0.6
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ju427"]
 shader = ExtResource("2_qwpdh")
-shader_parameter/dispersion = 0.02
+shader_parameter/dispersion = 0.01
 shader_parameter/distort = 0.01
-shader_parameter/blur_amount = 0.02
+shader_parameter/blur_amount = 0.01
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2koi"]
 content_margin_left = 16.0
@@ -141,16 +141,14 @@ top_level = true
 script = ExtResource("3_q7ypj")
 move_speed = 0.281
 
-[node name="ColorRect" type="ColorRect" parent="Camera2D"]
-visible = false
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+layer = 0
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
 material = SubResource("ShaderMaterial_ju427")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -575.0
-offset_top = -324.0
-offset_right = 577.0
-offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
