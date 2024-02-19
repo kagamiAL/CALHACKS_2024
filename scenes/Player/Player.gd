@@ -25,10 +25,16 @@ var moveVector: Vector2
 #Used to handle contact audio request
 var contact_audio_request: bool = false
 
+#Used to shoot raycast to prevent clipping in walls
+var last_position: Vector2;
+
 func _process(delta):
 	$%Time.text = "%.2f" % ((Time.get_ticks_msec() - initial_time) / 1000.)
 
 func _physics_process(delta):
+	#Prevent wall clipping
+	detect_wall_clipping()
+
 	# Add the gravity.
 	if not is_on_floor():
 		contact_audio_request = true
@@ -55,7 +61,7 @@ func _physics_process(delta):
 			for collision in _collisions:
 				var layer = object.get_layer_for_body_rid(collision)
 				handle_tile_collision(layer)
-	
+
 	# Who up rolling they boulder (rolling SFX)
 	# TODO hard coded stop hard coding magic numbers idiot
 	$RollingTheyBoulder.volume_db = linear_velocity.x/100
@@ -124,6 +130,20 @@ func _integrate_forces(state):
 func move_body(targetPos: Vector2):
 	moveVector = targetPos;
 	reset_state = true;
+
+func detect_wall_clipping():
+	if last_position:
+		#Since RayCast2D Node is a weirdo we will directly calculate a raycast
+		var space_state = get_world_2d().direct_space_state
+		#Shoot a ray from last position to current
+		var query = PhysicsRayQueryParameters2D.create(last_position, self.global_position)
+		query.exclude = [self]
+		var result = space_state.intersect_ray(query)
+		if result:
+			print("Player collided with ", result.collider.name)
+			move_body(last_position)
+			return
+	last_position = self.global_position
 
 func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	_collisions.append(body_rid)
