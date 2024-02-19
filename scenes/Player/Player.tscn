@@ -15,7 +15,7 @@ friction = 0.6
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ju427"]
 shader = ExtResource("2_qwpdh")
 shader_parameter/dispersion = 0.01
-shader_parameter/distort = 0.01
+shader_parameter/distort = 0.02
 shader_parameter/blur_amount = 0.01
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2koi"]
