@@ -2,13 +2,13 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="60.429005mm"
-   height="60.429005mm"
-   viewBox="0 0 60.429005 60.429005"
+   width="169.09386mm"
+   height="59.474995mm"
+   viewBox="0 0 169.09386 59.474995"
    version="1.1"
    id="svg1"
    inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
-   sodipodi:docname="icon.svg"
+   sodipodi:docname="logo-full.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -25,9 +25,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      inkscape:zoom="1"
-     inkscape:cx="95"
-     inkscape:cy="75"
-     inkscape:window-width="820"
+     inkscape:cx="312"
+     inkscape:cy="144"
+     inkscape:window-width="1218"
      inkscape:window-height="1020"
      inkscape:window-x="0"
      inkscape:window-y="0"
@@ -46,13 +46,13 @@
          id="use3" />
     </clipPath>
     <filter
-       style="color-interpolation-filters:sRGB;"
+       style="color-interpolation-filters:sRGB"
        inkscape:label="Drop Shadow"
        id="filter76"
-       x="0.16060708"
-       y="0"
-       width="0.69847411"
-       height="0.72085803">
+       x="0.052221574"
+       y="-0.00036030757"
+       width="0.96849861"
+       height="0.73296649">
       <feFlood
          result="flood"
          in="SourceGraphic"
@@ -62,7 +62,7 @@
       <feGaussianBlur
          result="blur"
          in="SourceGraphic"
-         stdDeviation="0"
+         stdDeviation="0.007102272727272727"
          id="feGaussianBlur75" />
       <feOffset
          result="offset"
@@ -88,11 +88,12 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     style="filter:url(#filter76)">
+     style="filter:url(#filter76)"
+     transform="translate(-19.647239,-1.4770053)">
     <g
        id="g3"
        clip-path="url(#clipPath3)"
-       transform="matrix(0.85579754,0,0,0.85579754,4.3570055,4.3570055)">
+       transform="matrix(0.54843098,0,0,0.54843098,32.48052,13.643933)">
       <g
          inkscape:label="Clip"
          id="g2"
@@ -123,14 +124,14 @@
     </g>
     <text
        xml:space="preserve"
-       style="font-style:italic;font-size:25.0132px;font-family:serif;-inkscape-font-specification:'serif Italic';display:none;opacity:1;fill:#1b1f2b;fill-opacity:1;stroke:#1b1f2b;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
-       x="70.865799"
-       y="39.22448"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.6627px;font-family:'Fixedsys Excelsior';-inkscape-font-specification:'Fixedsys Excelsior';display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#1b1f2b;stroke-width:3.175;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       x="73.90519"
+       y="37.588387"
        id="text76"><tspan
          sodipodi:role="line"
          id="tspan76"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:montserrat;-inkscape-font-specification:'montserrat Bold';stroke-width:0"
-         x="70.865799"
-         y="39.22448">MIN SPACE</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fixedsys Excelsior';-inkscape-font-specification:'Fixedsys Excelsior';stroke-width:3.175;stroke-dasharray:none;fill:#ffffff;fill-opacity:1;paint-order:stroke fill markers"
+         x="73.90519"
+         y="37.588387">MIN SPACE</tspan></text>
   </g>
 </svg>

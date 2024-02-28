@@ -1,5 +1,5 @@
-CalgaryHacks 2024
-=================
+# ![MIN SPACE](logo-full.svg)
+
 
 Submission to CalgaryHacks 2024. Team members:
 - Alan @kagamiAL
