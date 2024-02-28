@@ -11,7 +11,6 @@
    sodipodi:docname="icon.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
@@ -25,9 +24,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      inkscape:zoom="1"
-     inkscape:cx="95"
-     inkscape:cy="75"
-     inkscape:window-width="820"
+     inkscape:cx="111"
+     inkscape:cy="90"
+     inkscape:window-width="941"
      inkscape:window-height="1020"
      inkscape:window-x="0"
      inkscape:window-y="0"
@@ -39,20 +38,19 @@
     <clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath3">
-      <use
-         x="0"
-         y="0"
-         xlink:href="#g2"
-         id="use3" />
+      <g
+         inkscape:label="Clip"
+         id="use3"
+         style="stroke:#1b1f2b;stroke-width:0;stroke-dasharray:none;stroke-opacity:1" />
     </clipPath>
     <filter
        style="color-interpolation-filters:sRGB;"
        inkscape:label="Drop Shadow"
        id="filter76"
-       x="0.16060708"
+       x="-0.11222141"
        y="0"
-       width="0.69847411"
-       height="0.72085803">
+       width="17.835466"
+       height="1.0409254">
       <feFlood
          result="flood"
          in="SourceGraphic"
@@ -67,8 +65,8 @@
       <feOffset
          result="offset"
          in="blur"
-         dx="1.5"
-         dy="1.5"
+         dx="1"
+         dy="1"
          id="feOffset75" />
       <feComposite
          result="comp1"
@@ -89,38 +87,21 @@
      inkscape:groupmode="layer"
      id="layer1"
      style="filter:url(#filter76)">
-    <g
-       id="g3"
-       clip-path="url(#clipPath3)"
-       transform="matrix(0.85579754,0,0,0.85579754,4.3570055,4.3570055)">
-      <g
-         inkscape:label="Clip"
-         id="g2"
-         style="stroke:#1b1f2b;stroke-width:0;stroke-dasharray:none;stroke-opacity:1">
-        <rect
-           style="fill:#e9efec;fill-opacity:1;stroke:#1b1f2b;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
-           id="rect1"
-           width="60.429005"
-           height="60.429005"
-           x="0"
-           y="0"
-           ry="7.5174117" />
-      </g>
-      <circle
-         style="fill:#1b1f2b;fill-opacity:1;stroke-width:0.931964"
-         id="path1"
-         cx="30.214502"
-         cy="26.736975"
-         r="12.82545" />
-      <rect
-         style="opacity:1;fill:#1b1f2b;fill-opacity:1;stroke-width:0.051297;stroke-dasharray:0.102593, 0.051297"
-         id="rect2"
-         width="82.633919"
-         height="35.572746"
-         x="2.9796293"
-         y="30.790874"
-         transform="rotate(15)" />
-    </g>
+    <path
+       d="m 10.790556,4.35684 c -3.5640905,0 -6.433716,2.8696255 -6.433716,6.433716 V 31.637345 L 56.07203,45.494381 V 10.790556 c 0,-3.5640905 -2.869109,-6.433716 -6.433199,-6.433716 z"
+       style="fill:#e9efec;stroke:#1b1f2b;stroke-width:0;filter:url(#filter76)"
+       id="path2" />
+    <circle
+       style="filter:url(#filter76);fill:#1b1f2b;fill-opacity:1;stroke-width:0.931964"
+       id="path1"
+       cx="30.214502"
+       cy="26.736975"
+       r="12.82545"
+       transform="matrix(0.85579754,0,0,0.85579754,4.3570054,4.3570054)" />
+    <path
+       d="M 56.07203,45.494381 4.35684,31.637345 v 18.001486 c 0,3.56409 2.8696255,6.433199 6.433716,6.433199 h 38.848275 c 3.56409,0 6.433199,-2.869109 6.433199,-6.433199 z"
+       style="opacity:1;fill:#1b1f2b;stroke-width:0.051297;stroke-dasharray:0.102593, 0.051297;filter:url(#filter76)"
+       id="path3" />
     <text
        xml:space="preserve"
        style="font-style:italic;font-size:25.0132px;font-family:serif;-inkscape-font-specification:'serif Italic';display:none;opacity:1;fill:#1b1f2b;fill-opacity:1;stroke:#1b1f2b;stroke-width:0;stroke-dasharray:none;stroke-opacity:1"
