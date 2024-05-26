@@ -75,6 +75,8 @@ func on_player_death():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Engine.physics_ticks_per_second = DisplayServer.screen_get_refresh_rate() # Hack to make physics smooth
+	print("Physics engine set to %d FPS" % Engine.physics_ticks_per_second)
 	set_up_maps_from_dir("res://scenes/Maps")
 	load_current_level()
 	level_indicator = level_indicator_scene.instantiate()
