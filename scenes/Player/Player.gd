@@ -9,6 +9,8 @@ const SKEW_SPEED = 0.1
 
 @onready var initial_time = Time.get_ticks_msec()
 
+@export_range(0, 1) var jump_slow_factor : float = 1
+
 var _collisions = []
 
 signal died
@@ -45,7 +47,7 @@ func _physics_process(delta):
 		$AnimationPlayer.play("jump")
 		$JumpAudio.play()
 		linear_velocity.y = JUMP_VELOCITY
-		linear_velocity.x *= 0
+		linear_velocity.x *= jump_slow_factor
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
