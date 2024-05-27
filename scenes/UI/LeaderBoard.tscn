@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://inas5xn4h6tb"]
+[gd_scene load_steps=3 format=3 uid="uid://inas5xn4h6tb"]
 
 [ext_resource type="Script" path="res://scenes/UI/LeaderBoard.gd" id="1_d3sb7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lp1oi"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.101961, 0.117647, 0.168627, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
 
 [node name="LeaderBoard" type="Control"]
 layout_mode = 3
@@ -11,7 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d3sb7")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(400, 550)
 layout_mode = 1
 anchors_preset = 8
@@ -19,54 +31,38 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -200.0
+offset_top = -275.0
+offset_right = 200.0
+offset_bottom = 275.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.133333, 0.133333, 0.133333, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_lp1oi")
 
-[node name="Title" type="VBoxContainer" parent="ColorRect"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.036
-anchor_right = 0.5
-anchor_bottom = 0.036
-offset_left = -48.0
-offset_top = -4.8
-offset_right = 48.0
-offset_bottom = 35.2
-grow_horizontal = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="ColorRect/Title"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="Title" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Leaderboard"
 
-[node name="Scores" type="VBoxContainer" parent="ColorRect"]
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Scores" type="VBoxContainer" parent="PanelContainer/VBoxContainer/ScrollContainer"]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.036
-anchor_right = 0.5
-anchor_bottom = 0.036
-offset_left = -108.0
-offset_top = 45.2
-offset_right = 108.0
-offset_bottom = 85.2
-grow_horizontal = 2
+layout_mode = 2
 
-[node name="Button" type="Button" parent="ColorRect"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -28.0
-offset_bottom = 26.0
-grow_horizontal = 0
-text = "X"
-
-[connection signal="button_down" from="ColorRect/Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="PanelContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_button_down"]
