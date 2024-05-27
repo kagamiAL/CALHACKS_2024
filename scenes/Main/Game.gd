@@ -57,6 +57,7 @@ func increment_level():
 	current_level += 1
 
 func on_player_won():
+	$AnimationPlayer.play("goal_reached")
 	$WinSound.play()
 	if next_level():
 		var game_win = game_win_scene.instantiate()

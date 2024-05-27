@@ -1,8 +1,45 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2x1cyqmkoaw"]
+[gd_scene load_steps=7 format=3 uid="uid://c2x1cyqmkoaw"]
 
 [ext_resource type="Script" path="res://scenes/Main/Game.gd" id="1_0vo2w"]
 [ext_resource type="AudioStream" uid="uid://c8g1lohgwvrea" path="res://res/audio/MinSpaceInGameTheme.ogg" id="2_qwucb"]
 [ext_resource type="AudioStream" uid="uid://bqnqrgaqdpu16" path="res://res/audio/win.ogg" id="3_k0ybw"]
+
+[sub_resource type="Animation" id="Animation_nmfib"]
+resource_name = "goal_reached"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(2, 2, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_asqgb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vghky"]
+_data = {
+"RESET": SubResource("Animation_asqgb"),
+"goal_reached": SubResource("Animation_nmfib")
+}
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_0vo2w")
@@ -14,3 +51,21 @@ bus = &"SoundTrack"
 [node name="WinSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_k0ybw")
 bus = &"SoundEffects"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.364706, 0.815686, 0.384314, 0.313726)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vghky")
+}
