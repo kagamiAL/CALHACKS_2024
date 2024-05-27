@@ -1,31 +1,29 @@
 [gd_resource type="Theme" load_steps=5 format=3 uid="uid://ckxqvhlb7yogw"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7krl2"]
-content_margin_left = 10.0
-content_margin_top = 5.0
-content_margin_right = 10.0
-content_margin_bottom = 5.0
-bg_color = Color(0.105882, 0.121569, 0.168627, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nnrpy"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.541176, 0.658824, 0.803922, 1)
-shadow_color = Color(0, 0, 0, 1)
+border_color = Color(0.839216, 0.270588, 0.270588, 0.705882)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5xq8u"]
 content_margin_left = 10.0
 content_margin_top = 5.0
 content_margin_right = 10.0
 content_margin_bottom = 5.0
-bg_color = Color(0.105882, 0.121569, 0.168627, 1)
+bg_color = Color(0.180356, 0.203011, 0.27088, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.913725, 0.937255, 0.92549, 1)
 shadow_color = Color(0, 0, 0, 1)
-shadow_size = 1
 shadow_offset = Vector2(2, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wuosi"]
@@ -40,7 +38,6 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.913725, 0.937255, 0.92549, 1)
 shadow_color = Color(0, 0, 0, 1)
-shadow_size = 2
 shadow_offset = Vector2(2, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nsx7m"]
@@ -48,7 +45,7 @@ content_margin_left = 10.0
 content_margin_top = 5.0
 content_margin_right = 10.0
 content_margin_bottom = 5.0
-bg_color = Color(0.105882, 0.121569, 0.168627, 1)
+bg_color = Color(0.0640703, 0.075731, 0.110727, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -57,7 +54,7 @@ border_color = Color(0.278431, 0.364706, 0.505882, 1)
 shadow_color = Color(0, 0, 0, 1)
 
 [resource]
-Button/styles/focus = SubResource("StyleBoxFlat_7krl2")
+Button/styles/focus = SubResource("StyleBoxFlat_nnrpy")
 Button/styles/hover = SubResource("StyleBoxFlat_5xq8u")
 Button/styles/normal = SubResource("StyleBoxFlat_wuosi")
 Button/styles/pressed = SubResource("StyleBoxFlat_nsx7m")

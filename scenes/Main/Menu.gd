@@ -19,5 +19,9 @@ func _on_quit_pressed():
 	get_tree().quit()
 
 func _on_leaderboard_pressed():
-	$LeaderBoard._update_leaderboard()
-	$LeaderBoard.visible = true
+	$%LeaderBoard._update_leaderboard()
+	$%LeaderBoard.visible = true
+
+func _process(_delta):
+	$Camera2D.zoom.x = max(1, get_viewport_rect().size.x / 1216)
+	$Camera2D.zoom.y = $Camera2D.zoom.x
