@@ -69,9 +69,7 @@ func on_player_won():
 		load_current_level()
 
 func on_player_death():
-	var game_over = game_over_scene.instantiate()
-	game_over.player_time = player.get_node("Camera2D/Time").text
-	add_child(game_over)
+	load_current_level()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
