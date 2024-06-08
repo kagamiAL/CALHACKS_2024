@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://crn1pixwrpc5j"]
+
+[ext_resource type="Texture2D" uid="uid://n32hsqeasyep" path="res://res/tiles.svg" id="1_4rxsb"]
+[ext_resource type="Script" path="res://scenes/Tiles/spikeshooter/spikeshooter.gd" id="1_g07b7"]
+[ext_resource type="PackedScene" uid="uid://byx8yirg6not" path="res://scenes/Tiles/spikeshooter/spike.tscn" id="2_ff3g4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imx73"]
+size = Vector2(64, 63)
+
+[node name="Spikeshooter" type="StaticBody2D"]
+script = ExtResource("1_g07b7")
+spike_scene = ExtResource("2_ff3g4")
+speed = 500.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_imx73")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4rxsb")
+region_enabled = true
+region_rect = Rect2(128, 64, 64, 64)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="SpawnPoint" type="Node2D" parent="."]
+position = Vector2(0, -67)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

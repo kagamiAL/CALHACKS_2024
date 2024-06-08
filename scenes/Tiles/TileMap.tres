@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://83e6r7d4e13"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://83e6r7d4e13"]
 
 [ext_resource type="Texture2D" uid="uid://n32hsqeasyep" path="res://res/tiles.svg" id="1_bk6nc"]
+[ext_resource type="PackedScene" uid="uid://crn1pixwrpc5j" path="res://scenes/Tiles/spikeshooter/spikeshooter.tscn" id="2_8gx8c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q7t2v"]
 texture = ExtResource("1_bk6nc")
@@ -25,8 +26,15 @@ texture_region_size = Vector2i(64, 64)
 2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:0/0/physics_layer_0/angular_velocity = 0.0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_5c3vb"]
+scenes/1/scene = ExtResource("2_8gx8c")
 
 [resource]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_q7t2v")
+sources/2 = SubResource("TileSetScenesCollectionSource_5c3vb")
