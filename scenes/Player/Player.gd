@@ -17,6 +17,9 @@ signal died
 
 signal won
 
+# When normalising the linear velocity to a 0-1 value, this specifies the "maximum" linear velocity
+var NORMALISE_VELOCITY_AMT = 1500.
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -66,11 +69,16 @@ func _physics_process(delta):
 
 	# Who up rolling they boulder (rolling SFX)
 	# TODO hard coded stop hard coding magic numbers idiot
-	$RollingTheyBoulder.volume_db = linear_velocity.x/100
+	var normalised_linear_velocity = min(abs(linear_velocity.length()), NORMALISE_VELOCITY_AMT)/NORMALISE_VELOCITY_AMT
+	$RollingTheyBoulder.volume_db = normalised_linear_velocity/10
 	if is_on_floor() and linear_velocity.x != 0:
 		if not $RollingTheyBoulder.playing: $RollingTheyBoulder.play()
 	else:
 		$RollingTheyBoulder.stop()
+		
+	# Zooming based on velocity
+	$Camera2D.zoom.x = lerp($Camera2D.zoom.x, 1 - normalised_linear_velocity/3, 0.01)
+	$Camera2D.zoom.y = $Camera2D.zoom.x
 
 func handle_tile_collision(tilemap_layer):
 	match tilemap_layer:
