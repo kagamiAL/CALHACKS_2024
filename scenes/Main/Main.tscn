@@ -147,6 +147,7 @@ visible = false
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_aul47")
 autoplay = true
+bus = &"SoundTrack"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
