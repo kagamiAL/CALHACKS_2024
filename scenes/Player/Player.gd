@@ -83,23 +83,29 @@ func _physics_process(delta):
 
 func handle_tile_collision(tilemap_layer):
 	match tilemap_layer:
+		# Static bodies (makes a "clink" sound)
 		0:
 			if contact_audio_request:
 				contact_audio_request = false
 				$ContactAudio.play()
 			return
 
-		1: # Trampoline
+		# Trampolines
+		1:
 			linear_velocity.y = -trampoline_bounce_amt
 			$JumpAudio.play()
 
-		2: # Spike
+		# Spikes
+		2:
 			kill()
 
+		# Goals
 		3:
 			emit_signal("won")
 
 func kill():
+	if $AnimationPlayer.is_playing() and $AnimationPlayer.current_animation == "die":
+		return
 	# Killing is fun!
 	# - Thi Dinh
 	# Can't _process/move
