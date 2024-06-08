@@ -1,4 +1,4 @@
-extends Control
+extends "res://scenes/UI/Dialog.gd"
 
 @onready var leader_board_data = get_node("/root/LeaderboardData")
 @onready var scores = $%Scores
