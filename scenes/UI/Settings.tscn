@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://ck22cvxmk301"]
+
+[ext_resource type="PackedScene" uid="uid://d0eivog06w651" path="res://scenes/UI/Dialog.tscn" id="1_mn0fb"]
+
+[node name="Settings" instance=ExtResource("1_mn0fb")]
+
+[node name="Title" parent="PanelContainer/VBoxContainer/HBoxContainer" index="1"]
+text = "Settings"
+
+[node name="Music Volume" type="HBoxContainer" parent="PanelContainer/VBoxContainer/ScrollContainer/Content" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/Content/Music Volume" index="0"]
+layout_mode = 2
+text = "Music volume"
+
+[node name="HSlider" type="HSlider" parent="PanelContainer/VBoxContainer/ScrollContainer/Content/Music Volume" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SFX Volume" type="HBoxContainer" parent="PanelContainer/VBoxContainer/ScrollContainer/Content" index="1"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/Content/SFX Volume" index="0"]
+layout_mode = 2
+text = "Sound effects"
+
+[node name="HSlider" type="HSlider" parent="PanelContainer/VBoxContainer/ScrollContainer/Content/SFX Volume" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
