@@ -22,6 +22,9 @@ func _on_leaderboard_pressed():
 	$%LeaderBoard._update_leaderboard()
 	$%LeaderBoard.visible = true
 
+func _on_settings_pressed():
+	$%Settings.visible = true
+
 func _process(_delta):
 	$Camera2D.zoom.x = max(1, get_viewport_rect().size.x / 1216)
 	$Camera2D.zoom.y = $Camera2D.zoom.x
