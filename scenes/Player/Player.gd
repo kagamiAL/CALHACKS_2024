@@ -11,6 +11,7 @@ const SKEW_SPEED = 0.1
 
 @export_range(0, 1) var jump_slow_factor : float = 1
 
+# Stores instantaneous collisions with tiles
 var _collisions = []
 
 signal died
@@ -157,7 +158,9 @@ func detect_wall_clipping():
 	last_position = self.global_position
 
 func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	_collisions.append(body_rid)
+	if body is TileMap:
+		_collisions.append(body_rid)
 
 func _on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
-	_collisions.remove_at(_collisions.find(body_rid))
+	if body is TileMap:
+		_collisions.remove_at(_collisions.find(body_rid))
