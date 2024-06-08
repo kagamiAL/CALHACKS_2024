@@ -1,8 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2x1cyqmkoaw"]
+[gd_scene load_steps=8 format=3 uid="uid://c2x1cyqmkoaw"]
 
 [ext_resource type="Script" path="res://scenes/Main/Game.gd" id="1_0vo2w"]
 [ext_resource type="AudioStream" uid="uid://c8g1lohgwvrea" path="res://res/audio/MinSpaceInGameTheme.ogg" id="2_qwucb"]
 [ext_resource type="AudioStream" uid="uid://bqnqrgaqdpu16" path="res://res/audio/win.ogg" id="3_k0ybw"]
+[ext_resource type="PackedScene" uid="uid://cv1b38h0riay4" path="res://scenes/Player/Player.tscn" id="4_st1hb"]
+
+[sub_resource type="Animation" id="Animation_asqgb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_nmfib"]
 resource_name = "goal_reached"
@@ -18,21 +34,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(2, 2, 0.5),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_asqgb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vghky"]
@@ -69,3 +70,8 @@ metadata/_edit_use_anchors_ = true
 libraries = {
 "": SubResource("AnimationLibrary_vghky")
 }
+
+[node name="Player" parent="." instance=ExtResource("4_st1hb")]
+
+[connection signal="died" from="Player" to="." method="_on_player_died"]
+[connection signal="won" from="Player" to="." method="_on_player_won"]

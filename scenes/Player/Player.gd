@@ -94,6 +94,7 @@ func kill():
 	# Killing is fun!
 	# - Thi Dinh
 	# Can't _process/move
+	_collisions.clear()
 	set_process(false)
 	set_physics_process(false)
 	set_deferred("freeze", true)
@@ -105,11 +106,12 @@ func kill():
 	$RollingTheyBoulder.stop()
 	$DeathAudio.play()
 	# All our food keeps BLOWING UP
-	$GPUParticles2D.emitting = true
-	# finally
-	emit_signal("died")
+	$AnimationPlayer.play("die")
 
 func reset():
+	# Restart velocity + position
+	position = Vector2.ZERO
+	# Reset things
 	set_process(true)
 	set_physics_process(true)
 	set_deferred("freeze", false)
@@ -118,8 +120,7 @@ func reset():
 	$Sprite.show()
 	$%Time.show()
 	$GPUParticles2D.emitting = false
-	# Restart velocity + position
-	move_body(Vector2.ZERO)
+	$AnimationPlayer.play("RESET")
 
 func is_on_floor():
 	return $RayCast2D.is_colliding()

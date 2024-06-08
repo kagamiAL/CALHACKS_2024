@@ -1,6 +1,5 @@
 extends Node2D
 
-@export var player_scene = load("res://scenes/Player/Player.tscn") as PackedScene
 @onready var game_over_scene = load("res://scenes/UI/GameOver.tscn") as PackedScene
 @onready var game_win_scene = load("res://scenes/UI/GameWin.tscn") as PackedScene
 @onready var level_indicator_scene = load("res://scenes/UI/LevelIndicator.tscn") as PackedScene
@@ -36,9 +35,8 @@ func load_current_level():
 	if map_node:
 		map_node.queue_free()
 		await map_node.tree_exited
-	if player:
-		player.reset()
-		await get_tree().physics_frame
+	$Player.reset()
+	await get_tree().physics_frame
 	map_node = maps[current_level].instantiate()
 	map_node.z_index = -1
 	add_child(map_node)
@@ -56,20 +54,20 @@ func get_current_level() -> int:
 func increment_level():
 	current_level += 1
 
-func on_player_won():
+func _on_player_won():
 	$AnimationPlayer.play("goal_reached")
 	$WinSound.play()
 	if next_level():
 		var game_win = game_win_scene.instantiate()
-		game_win.player_time = player.get_node("Camera2D/Time").text
+		game_win.player_time = $Player.get_node("Camera2D/Time").text
 		add_child(game_win)
-		player.queue_free()
+		$Player.queue_free()
 		map_node.queue_free()
 	else:
 		level_indicator.change_indicated_level(current_level)
 		load_current_level()
 
-func on_player_death():
+func _on_player_died():
 	load_current_level()
 
 # Called when the node enters the scene tree for the first time.
@@ -80,8 +78,4 @@ func _ready():
 	load_current_level()
 	level_indicator = level_indicator_scene.instantiate()
 	add_child(level_indicator)
-	player = player_scene.instantiate()
-	add_child(player)
-	player.won.connect(on_player_won)
-	player.died.connect(on_player_death)
 	$SoundTrack.play()
