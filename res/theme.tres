@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://ckxqvhlb7yogw"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://ckxqvhlb7yogw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nnrpy"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -53,8 +53,54 @@ border_width_bottom = 2
 border_color = Color(0.278431, 0.364706, 0.505882, 1)
 shadow_color = Color(0, 0, 0, 1)
 
+[sub_resource type="Gradient" id="Gradient_ekls7"]
+colors = PackedColorArray(0.913725, 0.937255, 0.92549, 1, 0.913725, 0.937255, 0.921569, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v0023"]
+gradient = SubResource("Gradient_ekls7")
+width = 7
+height = 21
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8e2bc"]
+gradient = SubResource("Gradient_ekls7")
+width = 7
+height = 21
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lsj7e"]
+gradient = SubResource("Gradient_ekls7")
+width = 7
+height = 21
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btrmn"]
+bg_color = Color(0.913725, 0.937255, 0.92549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sghn1"]
+bg_color = Color(0.913725, 0.937255, 0.92549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngjd1"]
+bg_color = Color(0.105882, 0.121569, 0.168627, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.913725, 0.937255, 0.92549, 1)
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
 [resource]
 Button/styles/focus = SubResource("StyleBoxFlat_nnrpy")
 Button/styles/hover = SubResource("StyleBoxFlat_5xq8u")
 Button/styles/normal = SubResource("StyleBoxFlat_wuosi")
 Button/styles/pressed = SubResource("StyleBoxFlat_nsx7m")
+HSlider/icons/grabber = SubResource("GradientTexture2D_v0023")
+HSlider/icons/grabber_disabled = SubResource("GradientTexture2D_8e2bc")
+HSlider/icons/grabber_highlight = SubResource("GradientTexture2D_lsj7e")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_btrmn")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_sghn1")
+HSlider/styles/slider = SubResource("StyleBoxFlat_ngjd1")
