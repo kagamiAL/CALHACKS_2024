@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2x1cyqmkoaw"]
+[gd_scene load_steps=9 format=3 uid="uid://c2x1cyqmkoaw"]
 
 [ext_resource type="Script" path="res://scenes/Main/Game.gd" id="1_0vo2w"]
 [ext_resource type="AudioStream" uid="uid://c8g1lohgwvrea" path="res://res/audio/MinSpaceInGameTheme.ogg" id="2_qwucb"]
 [ext_resource type="AudioStream" uid="uid://bqnqrgaqdpu16" path="res://res/audio/win.ogg" id="3_k0ybw"]
 [ext_resource type="PackedScene" uid="uid://cv1b38h0riay4" path="res://scenes/Player/Player.tscn" id="4_st1hb"]
+[ext_resource type="PackedScene" uid="uid://em2nydjr45ge" path="res://scenes/UI/GameWin.tscn" id="5_m7ero"]
 
 [sub_resource type="Animation" id="Animation_asqgb"]
 length = 0.001
@@ -44,6 +45,7 @@ _data = {
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_0vo2w")
+level_index = 6
 
 [node name="SoundTrack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_qwucb")
@@ -72,6 +74,9 @@ libraries = {
 }
 
 [node name="Player" parent="." instance=ExtResource("4_st1hb")]
+
+[node name="GameWin" parent="." instance=ExtResource("5_m7ero")]
+visible = false
 
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="won" from="Player" to="." method="_on_player_won"]

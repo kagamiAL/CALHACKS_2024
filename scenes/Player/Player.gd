@@ -35,7 +35,10 @@ var contact_audio_request: bool = false
 var last_position: Vector2;
 
 func _process(delta):
-	$%Time.text = "%.2f" % ((Time.get_ticks_msec() - initial_time) / 1000.)
+	$%Time.text = "%.2f" % get_time_elapsed()
+
+func get_time_elapsed():
+	return ((Time.get_ticks_msec() - initial_time) / 1000.)
 
 func _physics_process(delta):
 	#Prevent wall clipping
@@ -101,7 +104,14 @@ func handle_tile_collision(tilemap_layer):
 
 		# Goals
 		3:
+			stop()
 			emit_signal("won")
+
+func stop():
+	set_process(false)
+	set_physics_process(false)
+	set_deferred("freeze", true)
+	$RollingTheyBoulder.stop()
 
 func kill():
 	if $AnimationPlayer.is_playing() and $AnimationPlayer.current_animation == "die":

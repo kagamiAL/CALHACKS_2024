@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://em2nydjr45ge"]
+[gd_scene load_steps=5 format=3 uid="uid://em2nydjr45ge"]
 
 [ext_resource type="Script" path="res://scenes/UI/GameWin.gd" id="1_lhbmn"]
+[ext_resource type="Shader" path="res://scenes/UI/Blur.gdshader" id="2_235q5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f5ggr"]
+shader = ExtResource("2_235q5")
+shader_parameter/lod = 1.724
 
 [sub_resource type="SystemFont" id="SystemFont_qvhwi"]
 font_names = PackedStringArray("Century Gothic")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4h11n"]
-particle_flag_disable_z = true
-gravity = Vector3(0, 98, 0)
+subpixel_positioning = 0
 
 [node name="GameWin" type="Control"]
 layout_mode = 3
@@ -18,7 +20,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lhbmn")
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 104.0
+offset_bottom = 16.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "kjlkjkljlkjkl"
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_f5ggr")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 8
@@ -51,6 +68,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Time" type="Label" parent="CanvasLayer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.380392, 0.364706, 0.917647, 1)
 theme_override_colors/font_shadow_color = Color(0.105882, 0.121569, 0.168627, 1)
@@ -63,7 +81,7 @@ text = "Time: 1:00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="MainMenu" type="Button" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -71,5 +89,5 @@ theme_override_font_sizes/font_size = 50
 text = "Main menu"
 icon_alignment = 1
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="CanvasLayer"]
-process_material = SubResource("ParticleProcessMaterial_4h11n")
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

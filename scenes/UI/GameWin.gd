@@ -2,17 +2,15 @@ extends Control
 
 @onready var switch_scene = get_node("/root/SceneSwitch")
 
-@onready var time_label: Label = $CanvasLayer/VBoxContainer/Time as Label
-@onready var main_menu_button: Button = $CanvasLayer/VBoxContainer/Button as Button
-@onready var leaderboard_data = get_node("/root/LeaderboardData")
 
-var player_time: float = 0;
+func set_time(time : float):
+	$%Time.text = "Time: " + str(time)
+	get_node("/root/LeaderboardData").append_leaderboard(time)
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	time_label.text = "Time: " + str(player_time)
-	leaderboard_data.append_leaderboard(player_time)
-	main_menu_button.button_down.connect(_on_main_menu_button_pressed)
 
-func _on_main_menu_button_pressed():
+func _on_visibility_changed():
+	$CanvasLayer.visible = visible
+
+
+func _on_main_menu_pressed():
 	switch_scene.goto_scene("res://scenes/Main/Main.tscn")

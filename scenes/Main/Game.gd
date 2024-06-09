@@ -1,7 +1,6 @@
 extends Node2D
 
 @onready var game_over_scene = load("res://scenes/UI/GameOver.tscn") as PackedScene
-@onready var game_win_scene = load("res://scenes/UI/GameWin.tscn") as PackedScene
 @onready var level_indicator_scene = load("res://scenes/UI/LevelIndicator.tscn") as PackedScene
 
 var maps: Dictionary = {};
@@ -9,7 +8,7 @@ var map_node: Node2D;
 var player;
 var level_indicator;
 
-var current_level: int = 0;
+@export var level_index: int;
 
 func set_up_maps_from_dir(path: String):
 	var regex = RegEx.new()
@@ -37,34 +36,32 @@ func load_current_level():
 		await map_node.tree_exited
 	$Player.reset()
 	await get_tree().physics_frame
-	map_node = maps[current_level].instantiate()
+	map_node = maps[level_index].instantiate()
 	map_node.z_index = -1
 	add_child(map_node)
 
 #Returns true if player won game
 func next_level() -> bool:
-	if (current_level < maps.size() - 1):
-		current_level += 1
+	if (level_index < maps.size() - 1):
+		level_index += 1
 		return false
 	return true
 
 func get_current_level() -> int:
-	return current_level
+	return level_index
 
 func increment_level():
-	current_level += 1
+	level_index += 1
 
 func _on_player_won():
 	$AnimationPlayer.play("goal_reached")
 	$WinSound.play()
 	if next_level():
-		var game_win = game_win_scene.instantiate()
-		game_win.player_time = $Player.get_node("Camera2D/Time").text
-		add_child(game_win)
-		$Player.queue_free()
-		map_node.queue_free()
+		$GameWin.set_time($Player.get_time_elapsed())
+		$GameWin.show()
+		$Player.hide()
 	else:
-		level_indicator.change_indicated_level(current_level)
+		level_indicator.change_indicated_level(level_index)
 		load_current_level()
 
 func _on_player_died():
