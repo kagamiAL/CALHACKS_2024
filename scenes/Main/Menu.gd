@@ -28,3 +28,7 @@ func _on_settings_pressed():
 func _process(_delta):
 	$Camera2D.zoom.x = max(1, get_viewport_rect().size.x / 1216)
 	$Camera2D.zoom.y = $Camera2D.zoom.x
+
+
+func _on_map_editor_pressed():
+	$%EditorMainMenu.show()

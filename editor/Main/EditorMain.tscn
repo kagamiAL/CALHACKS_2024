@@ -1,0 +1,128 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqfy5urq65gy0"]
+
+[ext_resource type="Script" path="res://editor/Main/Main.gd" id="1_u1phi"]
+[ext_resource type="Shader" path="res://scenes/UI/Blur.gdshader" id="2_q1mmh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dtduo"]
+shader = ExtResource("2_q1mmh")
+shader_parameter/lod = 1.724
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7dwnw"]
+content_margin_left = 32.0
+content_margin_top = 32.0
+content_margin_right = 32.0
+content_margin_bottom = 32.0
+bg_color = Color(0.105882, 0.121569, 0.168627, 0.87451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ip0ro"]
+content_margin_left = 32.0
+content_margin_top = 32.0
+content_margin_right = 32.0
+content_margin_bottom = 32.0
+bg_color = Color(0.105882, 0.121569, 0.168627, 0.501961)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.913725, 0.937255, 0.92549, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_tx462"]
+color = Color(0.913725, 0.937255, 0.92549, 1)
+thickness = 3
+
+[node name="EditorMainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u1phi")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_dtduo")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7dwnw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Title" type="Label" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_ip0ro")
+text = "Map Editor - No file loaded"
+
+[node name="HSplitContainer" type="HSplitContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 32
+
+[node name="LeftSide" type="PanelContainer" parent="PanelContainer/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ip0ro")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/HSplitContainer/LeftSide"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HSplitContainer/LeftSide/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Back" type="Button" parent="PanelContainer/VBoxContainer/HSplitContainer/LeftSide/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/HSplitContainer/LeftSide/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "New Circuit"
+
+[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer/HSplitContainer/LeftSide/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Load Circuit"
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer/HSplitContainer/LeftSide/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_tx462")
+
+[node name="Button3" type="Button" parent="PanelContainer/VBoxContainer/HSplitContainer/LeftSide/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+disabled = true
+text = "Play Circuit"
+
+[node name="Button4" type="Button" parent="PanelContainer/VBoxContainer/HSplitContainer/LeftSide/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+disabled = true
+text = "Set Song"
+
+[node name="RightSide" type="PanelContainer" parent="PanelContainer/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ip0ro")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HSplitContainer/RightSide"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HSplitContainer/LeftSide/ScrollContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

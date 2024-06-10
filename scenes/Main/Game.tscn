@@ -45,7 +45,6 @@ _data = {
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_0vo2w")
-level_index = 6
 
 [node name="SoundTrack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_qwucb")
