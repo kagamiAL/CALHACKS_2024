@@ -1,0 +1,84 @@
+[gd_scene load_steps=10 format=3 uid="uid://dv8vjynmrwtpo"]
+
+[ext_resource type="Script" path="res://scenes/Game/Game.gd" id="1_cu4hv"]
+[ext_resource type="AudioStream" uid="uid://c8g1lohgwvrea" path="res://res/audio/MinSpaceInGameTheme.ogg" id="1_lwpvk"]
+[ext_resource type="AudioStream" uid="uid://bqnqrgaqdpu16" path="res://res/audio/win.ogg" id="2_vh8xm"]
+[ext_resource type="PackedScene" uid="uid://cv1b38h0riay4" path="res://scenes/Player/Player.tscn" id="3_0nyyc"]
+[ext_resource type="PackedScene" uid="uid://c68igqu6e4wp6" path="res://scenes/UI/LevelIndicator.tscn" id="5_ahu8x"]
+[ext_resource type="PackedScene" uid="uid://em2nydjr45ge" path="res://scenes/UI/GameWin.tscn" id="5_io4x5"]
+
+[sub_resource type="Animation" id="Animation_asqgb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nmfib"]
+resource_name = "goal_reached"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(2, 2, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vghky"]
+_data = {
+"RESET": SubResource("Animation_asqgb"),
+"goal_reached": SubResource("Animation_nmfib")
+}
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_cu4hv")
+
+[node name="SoundTrack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_lwpvk")
+bus = &"SoundTrack"
+
+[node name="WinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_vh8xm")
+bus = &"SoundEffects"
+
+[node name="Player" parent="." instance=ExtResource("3_0nyyc")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.364706, 0.815686, 0.384314, 0.313726)
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vghky")
+}
+
+[node name="LevelIndicator" parent="." instance=ExtResource("5_ahu8x")]
+
+[node name="GameWin" parent="." instance=ExtResource("5_io4x5")]
+visible = false
+
+[connection signal="died" from="Player" to="." method="_on_player_died"]
+[connection signal="won" from="Player" to="." method="_on_player_won"]
