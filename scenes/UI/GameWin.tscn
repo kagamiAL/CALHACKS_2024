@@ -11,25 +11,10 @@ shader_parameter/lod = 1.724
 font_names = PackedStringArray("Century Gothic")
 subpixel_positioning = 0
 
-[node name="GameWin" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GameWin" type="CanvasLayer"]
 script = ExtResource("1_lhbmn")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 104.0
-offset_bottom = 16.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "kjlkjkljlkjkl"
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_f5ggr")
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,22 +22,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -128.0
+offset_top = -113.0
+offset_right = 128.0
+offset_bottom = 113.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 25
 
-[node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer"]
+[node name="Label2" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.913725, 0.937255, 0.92549, 1)
 theme_override_colors/font_shadow_color = Color(0.105882, 0.121569, 0.168627, 1)
@@ -67,7 +52,7 @@ text = "YOU WIN!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Time" type="Label" parent="CanvasLayer/VBoxContainer"]
+[node name="Time" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.380392, 0.364706, 0.917647, 1)
@@ -81,7 +66,7 @@ text = "Time: 1:00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MainMenu" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="MainMenu" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -89,5 +74,4 @@ theme_override_font_sizes/font_size = 50
 text = "Main menu"
 icon_alignment = 1
 
-[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
