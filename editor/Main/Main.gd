@@ -58,6 +58,14 @@ func _on_file_id_pressed(id):
 		4:
 			$SaveDialog.show()
 
+func _on_edit_id_pressed(id):
+	# TODO: Save beforehand
+	match id:
+		0:
+			# TODO: instantiate with loading the json from the circuit, otherwise don't
+			# TODO: possibly: another subviewport that locks input?
+			get_node("/root/SceneSwitch").play_circuit(export_json())
+
 # If the editor modified its TileMap, save the map.
 func _on_editor_modified():
 	var selected = $%MapTree.get_selected()

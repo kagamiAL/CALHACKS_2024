@@ -136,7 +136,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="LoadDialog" type="FileDialog" parent="."]
-title = "Load circuit"
+title = "Open a File"
 ok_button_text = "Open"
 file_mode = 0
 access = 2
@@ -151,6 +151,7 @@ filters = PackedStringArray(".json")
 use_native_dialog = true
 
 [connection signal="id_pressed" from="PanelContainer/VBoxContainer/PanelContainer/MenuBar/File" to="." method="_on_file_id_pressed"]
+[connection signal="id_pressed" from="PanelContainer/VBoxContainer/PanelContainer/MenuBar/Edit" to="." method="_on_edit_id_pressed"]
 [connection signal="modified" from="PanelContainer/VBoxContainer/HBoxContainer/View/SubViewportContainer/SubViewport/Editor" to="." method="_on_editor_modified"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/TabContainer/Maps/HBoxContainer/NewMap" to="." method="_on_new_map_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/TabContainer/Maps/HBoxContainer/DeleteMap" to="." method="_on_delete_map_pressed"]

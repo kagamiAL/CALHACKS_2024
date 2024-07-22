@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://bg0nxe4bxdesn"]
 
 [ext_resource type="Script" path="res://editor/Editor.gd" id="1_qtpau"]
-[ext_resource type="TileSet" uid="uid://83e6r7d4e13" path="res://scenes/Tiles/TileMap.tres" id="1_xevig"]
 [ext_resource type="Script" path="res://editor/PanControl.gd" id="2_3aju1"]
 [ext_resource type="Script" path="res://scenes/Player/Sprite.gd" id="3_gvyou"]
 [ext_resource type="Script" path="res://editor/AddControl.gd" id="3_pc26n"]
+[ext_resource type="PackedScene" uid="uid://b50u22ac7kuap" path="res://scenes/Tiles/savedtilemap/SavedTileMap.tscn" id="4_82d7c"]
 [ext_resource type="Texture2D" uid="uid://n32hsqeasyep" path="res://res/tiles.svg" id="4_wfxpc"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_q1agl"]
@@ -133,16 +133,7 @@ layout_mode = 2
 shortcut = SubResource("Shortcut_livu2")
 text = "↺ 90deg"
 
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource("1_xevig")
-format = 2
-layer_0/name = "Base"
-layer_1/name = "Trampolines"
-layer_1/tile_data = PackedInt32Array()
-layer_2/name = "Spikes"
-layer_2/tile_data = PackedInt32Array()
-layer_3/name = "Goals"
-layer_3/tile_data = PackedInt32Array()
+[node name="TileMap" parent="." instance=ExtResource("4_82d7c")]
 
 [node name="AddMarker" type="Sprite2D" parent="."]
 visible = false
