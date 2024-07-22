@@ -2,6 +2,11 @@ extends Node
 
 var current_scene = null
 
+func play_circuit(circuit_json):
+	goto_scene("res://scenes/Game/Game.tscn")
+	await get_tree().process_frame
+	current_scene.load_json(circuit_json)
+
 func goto_scene(path):
 	# This function will usually be called from a signal callback,
 	# or some other function in the current scene.
