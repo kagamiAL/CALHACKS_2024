@@ -27,6 +27,7 @@ func _on_delete_map_pressed():
 	var selected = $%MapTree.get_selected()
 	if selected:
 		$%MapTree.get_root().remove_child(selected)
+	$%Status.text = "Map \"%s\" removed." % selected.get_text(0)
 
 func _on_map_tree_item_selected():
 	$%SubViewportContainer.show()
@@ -35,6 +36,7 @@ func _on_map_tree_item_selected():
 	var selected = $%MapTree.get_selected()
 	if selected and selected in maps:
 		$%Editor.load_json(maps[selected])
+	$%Status.text = "Map \"%s\" selected." % selected.get_text(0)
 
 
 func _on_file_id_pressed(id):
@@ -46,6 +48,7 @@ func _on_file_id_pressed(id):
 			$%MapTree.clear()
 			$%MapTree.create_item()
 			$%SubViewportContainer.hide()
+			$%Status.text = "Editor reset."
 		2:
 			$LoadDialog.show()
 		3:
@@ -54,6 +57,7 @@ func _on_file_id_pressed(id):
 			if FileAccess.file_exists($LoadDialog.get_current_file()):
 				_on_save_dialog_file_selected($LoadDialog.get_current_file())
 			else:
+				$%Status.text = "New file detected, opening save as..."
 				$SaveDialog.show()
 		4:
 			$SaveDialog.show()
@@ -62,9 +66,7 @@ func _on_edit_id_pressed(id):
 	# TODO: Save beforehand
 	match id:
 		0:
-			# TODO: instantiate with loading the json from the circuit, otherwise don't
-			# TODO: possibly: another subviewport that locks input?
-			get_node("/root/SceneSwitch").play_circuit(export_json())
+			$RunDialog.show()
 
 # If the editor modified its TileMap, save the map.
 func _on_editor_modified():
@@ -76,11 +78,13 @@ func _on_save_dialog_file_selected(path):
 	var file = FileAccess.open(path, FileAccess.WRITE)
 	file.store_string(JSON.stringify(export_json()))
 	file.close()
+	$%Status.text = "File saved to %s." % path
 	
 func _on_load_dialog_file_selected(path):
 	var file = FileAccess.open(path, FileAccess.READ)
 	load_json(JSON.parse_string(file.get_as_text()))
 	file.close()
+	$%Status.text = "Loaded %s." % path
 
 # Export to JSON (raw)
 func export_json():
@@ -116,3 +120,9 @@ func load_json(input):
 		self.maps[item] = map["data"]
 	# Hides subviewport
 	$%SubViewportContainer.hide()
+
+# Runs the circuit.
+func _on_run_dialog_confirmed():
+	# TODO: instantiate with loading the json from the circuit, otherwise don't
+	# TODO: possibly: another subviewport that locks input?
+	get_node("/root/SceneSwitch").play_circuit(export_json())
