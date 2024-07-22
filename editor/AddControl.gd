@@ -1,5 +1,7 @@
 extends Control
 
+signal modified
+
 @export var marker : Sprite2D
 
 @export var tilemap : TileMap
@@ -24,11 +26,11 @@ func _on_gui_input(event):
 		# for each rotation) based on the rotation of the marker
 		var alt = 0 # Alternative tile
 		if marker.rotation_degrees == 270:
-			alt = TileSetAtlasSource.TRANSFORM_FLIP_H
+			alt = TileSetAtlasSource.TRANSFORM_FLIP_V | TileSetAtlasSource.TRANSFORM_TRANSPOSE
 		elif marker.rotation_degrees == 180:
-			alt = TileSetAtlasSource.TRANSFORM_FLIP_H | TileSetAtlasSource.TRANSFORM_FLIP_V
+			alt = TileSetAtlasSource.TRANSFORM_FLIP_V | TileSetAtlasSource.TRANSFORM_FLIP_H
 		elif marker.rotation_degrees == 90:
-			alt = TileSetAtlasSource.TRANSFORM_FLIP_V
+			alt = TileSetAtlasSource.TRANSFORM_FLIP_H | TileSetAtlasSource.TRANSFORM_TRANSPOSE
 		# Sets the tile
 		match tile_option_button.get_selected_id():
 			# Block
@@ -49,7 +51,9 @@ func _on_gui_input(event):
 			# Spike :3
 			5:
 				tilemap.set_cell(2, marker_position, 1, Vector2i(1, 0), alt)
+		emit_signal("modified")
 	# Erase
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		for layer in range(tilemap.get_layers_count()):
 			tilemap.set_cell(layer, marker_position, 0)
+		emit_signal("modified")

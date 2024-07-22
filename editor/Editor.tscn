@@ -160,6 +160,7 @@ color = Color(0.839216, 0.270588, 0.270588, 1)
 
 [connection signal="gui_input" from="CanvasLayer/PanControl" to="CanvasLayer/PanControl" method="_on_gui_input"]
 [connection signal="gui_input" from="CanvasLayer/AddControl" to="CanvasLayer/AddControl" method="_on_gui_input"]
+[connection signal="modified" from="CanvasLayer/AddControl" to="." method="_on_add_control_modified"]
 [connection signal="item_selected" from="CanvasLayer/MarginContainer/PanelContainer/HBoxContainer/Tiles/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="item_selected" from="CanvasLayer/MarginContainer/PanelContainer/HBoxContainer/Controls/Mode" to="." method="_on_mode_item_selected"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/PanelContainer/HBoxContainer/Controls/Left90" to="." method="_on_left_90_pressed"]
