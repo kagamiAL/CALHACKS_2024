@@ -8,7 +8,8 @@ const ENTITY_CONVERSION_KEY = {
 	"goal": [3, 1, Vector2i(2, 0)],
 	"trampoline": [1, 1, Vector2i(0, 1)],
 	"speed": [0, 2, Vector2i(0, 0), 2],
-	"spike": [2, 1, Vector2i(1, 0)]
+	"spike": [2, 1, Vector2i(1, 0)],
+	"spikeshooter": [0, 2, Vector2i(0, 0), 1]
 }
 
 # Rotation <-> alternative tile conversion
@@ -38,6 +39,12 @@ func export_json():
 		exported.append({
 			"type": "speed",
 			"position": [speed.x, speed.y],
+			"rotation": 0
+		})
+	for spikeshooter in get_used_cells_by_id(ENTITY_CONVERSION_KEY["spikeshooter"][0], ENTITY_CONVERSION_KEY["spikeshooter"][1], ENTITY_CONVERSION_KEY["spikeshooter"][2], ENTITY_CONVERSION_KEY["spikeshooter"][3]):
+		exported.append({
+			"type": "spikeshooter",
+			"position": [spikeshooter.x, spikeshooter.y],
 			"rotation": 0
 		})
 	return exported

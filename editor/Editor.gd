@@ -30,6 +30,9 @@ func _on_option_button_item_selected(index):
 		# Spike :3
 		5:
 			$AddMarker.region_rect.position = Vector2(64,0)
+		# spike shooter
+		6:
+			$AddMarker.region_rect.position = Vector2(128,64)
 
 # yeah i'm using degrees instead of radians... i'm a sellout......
 func _on_right_90_pressed():
@@ -109,6 +112,9 @@ func _on_mouse_control_gui_input(event):
 			# Spike :3
 			5:
 				$TileMap.set_cell(2, marker_position, 1, Vector2i(1, 0), alt)
+			# Spike shooter
+			6:
+				$TileMap.set_cell(0, marker_position, 2, Vector2i(0, 0), 1)
 		emit_signal("modified")
 	# Erase
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
