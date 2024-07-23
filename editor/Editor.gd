@@ -105,7 +105,7 @@ func _on_mouse_control_gui_input(event):
 				$TileMap.set_cell(1, marker_position, 1, Vector2i(0, 1), alt)
 			# Speed
 			4:
-				$TileMap.set_cell(0, marker_position, 1, Vector2i(3, 1), alt)
+				$TileMap.set_cell(0, marker_position, 2, Vector2i(0, 0), 2)
 			# Spike :3
 			5:
 				$TileMap.set_cell(2, marker_position, 1, Vector2i(1, 0), alt)

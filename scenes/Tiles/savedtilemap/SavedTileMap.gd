@@ -7,7 +7,7 @@ const ENTITY_CONVERSION_KEY = {
 	"slope": [0, 1, Vector2i(1, 1)],
 	"goal": [3, 1, Vector2i(2, 0)],
 	"trampoline": [1, 1, Vector2i(0, 1)],
-	"speed": [0, 1, Vector2i(3, 1)],
+	"speed": [0, 2, Vector2i(0, 0), 2],
 	"spike": [2, 1, Vector2i(1, 0)]
 }
 
@@ -33,6 +33,13 @@ func export_json():
 				"position": [tile_pos.x, tile_pos.y],
 				"rotation": ROTATION_KEY.find_key(get_cell_alternative_tile(layer, tile_pos))
 			})
+	# Loop for EACH kind of scene
+	for speed in get_used_cells_by_id(ENTITY_CONVERSION_KEY["speed"][0], ENTITY_CONVERSION_KEY["speed"][1], ENTITY_CONVERSION_KEY["speed"][2], ENTITY_CONVERSION_KEY["speed"][3]):
+		exported.append({
+			"type": "speed",
+			"position": [speed.x, speed.y],
+			"rotation": 0
+		})
 	return exported
 
 # Loads from a JSON (parsed)
@@ -40,14 +47,15 @@ func load_json(input):
 	for tile in input:
 		if tile["type"] and tile["type"] in ENTITY_CONVERSION_KEY.keys():
 			var entity = ENTITY_CONVERSION_KEY[tile["type"]]
+			var alternate_tile = ROTATION_KEY[int(tile["rotation"])] if tile["rotation"] else 0
 			set_cell(
 				entity[0],
 				Vector2(tile["position"][0], tile["position"][1]),
 				entity[1],
 				entity[2],
-				ROTATION_KEY[int(tile["rotation"])] if tile["rotation"] else 0
+				entity[3] if len(entity) > 3 else alternate_tile
 			)
 
 func erase_at(erase_position: Vector2i):
 	for layer in range(get_layers_count()):
-		set_cell(layer, erase_position, 0)
+		set_cell(layer, erase_position, -1)
