@@ -3,9 +3,7 @@ extends Node
 var current_scene = null
 
 func play_circuit(circuit_json):
-	goto_scene("res://scenes/Game/Game.tscn")
-	await get_tree().process_frame
-	current_scene.load_json(circuit_json)
+	call_deferred("_deferred_play_circuit", circuit_json)
 
 func goto_scene(path):
 	# This function will usually be called from a signal callback,
@@ -28,6 +26,23 @@ func _deferred_goto_scene(path):
 
 	# Instance the new scene.
 	current_scene = s.instantiate()
+
+	# Add it to the active scene, as child of root.
+	get_tree().root.add_child(current_scene)
+
+	# Optionally, to make it compatible with the SceneTree.change_scene_to_file() API.
+	get_tree().current_scene = current_scene
+
+func _deferred_play_circuit(circuit_json):
+	# It is now safe to remove the current scene.
+	current_scene.free()
+
+	# Load the new scene.
+	var s = ResourceLoader.load("res://scenes/Game/Game.tscn")
+
+	# Instance the new scene.
+	current_scene = s.instantiate()
+	current_scene.call_deferred("load_json", circuit_json)
 
 	# Add it to the active scene, as child of root.
 	get_tree().root.add_child(current_scene)
