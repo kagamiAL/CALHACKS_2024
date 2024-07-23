@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bhju5n4ymgoto"]
+[gd_scene load_steps=17 format=3 uid="uid://bhju5n4ymgoto"]
 
 [ext_resource type="Script" path="res://scenes/Main/Menu.gd" id="1_r3bay"]
 [ext_resource type="AudioStream" uid="uid://bxr6qqqx2lq5d" path="res://res/audio/MainMenuTheme.ogg" id="3_aul47"]
@@ -6,6 +6,7 @@
 [ext_resource type="TileSet" uid="uid://83e6r7d4e13" path="res://scenes/Tiles/TileMap.tres" id="3_udspc"]
 [ext_resource type="PackedScene" uid="uid://ck22cvxmk301" path="res://scenes/UI/Settings.tscn" id="4_mw6f4"]
 [ext_resource type="PackedScene" uid="uid://dqfy5urq65gy0" path="res://editor/Main/EditorMain.tscn" id="5_a2ivn"]
+[ext_resource type="AudioStream" uid="uid://bwq6ovbkav027" path="res://res/audio/MapTheme.ogg" id="7_awp7m"]
 
 [sub_resource type="SystemFont" id="SystemFont_nlf74"]
 font_names = PackedStringArray("Century Gothic")
@@ -52,6 +53,91 @@ tracks/0/keys = {
 _data = {
 "RESET": SubResource("Animation_fbmog"),
 "camera": SubResource("Animation_17eu4")
+}
+
+[sub_resource type="Animation" id="Animation_hgjb7"]
+resource_name = "crossfade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MapTheme:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-80.0, -10.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MapTheme:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_l72wp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MapTheme:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-16.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f71vl"]
+_data = {
+"RESET": SubResource("Animation_l72wp"),
+"crossfade": SubResource("Animation_hgjb7")
 }
 
 [node name="Menu" type="Control"]
@@ -152,7 +238,7 @@ offset_right = 144.0
 unique_name_in_owner = true
 visible = false
 
-[node name="EditorMainMenu" parent="CanvasLayer" instance=ExtResource("5_a2ivn")]
+[node name="Editor" parent="CanvasLayer" instance=ExtResource("5_a2ivn")]
 unique_name_in_owner = true
 visible = false
 
@@ -160,6 +246,10 @@ visible = false
 stream = ExtResource("3_aul47")
 autoplay = true
 bus = &"SoundTrack"
+
+[node name="MapTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_awp7m")
+volume_db = -16.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -172,8 +262,14 @@ libraries = {
 autoplay = "camera"
 speed_scale = 0.05
 
+[node name="SoundAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f71vl")
+}
+
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Leaderboard" to="." method="_on_leaderboard_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/SettingsButton" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/MapEditor" to="." method="_on_map_editor_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="visibility_changed" from="CanvasLayer/Editor" to="." method="_on_editor_visibility_changed"]

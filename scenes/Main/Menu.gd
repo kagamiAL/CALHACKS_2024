@@ -31,4 +31,12 @@ func _process(_delta):
 
 
 func _on_map_editor_pressed():
-	$%EditorMainMenu.show()
+	$%Editor.show()
+
+
+func _on_editor_visibility_changed():
+	if $%Editor.visible:
+		$MapTheme.play()
+		$SoundAnimationPlayer.play("crossfade")
+	else:
+		$SoundAnimationPlayer.play_backwards("crossfade")

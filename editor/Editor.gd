@@ -2,18 +2,11 @@ extends Node2D
 
 signal modified
 
-func _on_mode_item_selected(index):
-	# Reset all
-	$%PanControl.hide()
-	$%AddControl.hide()
-	$AddMarker.hide()
-	# Match
-	match index: # TODO: index -> id
-		0:
-			$%PanControl.show()
-		1:
-			$%AddControl.show()
-			$AddMarker.show()
+@export var marker_offset : Vector2
+
+var pan_start : Vector2;
+
+var marker_position : Vector2i = Vector2i(0, 0)
 
 # Updates AddMarker
 # TODO: find a way to make this not hard-coded
@@ -65,6 +58,60 @@ func export_json():
 func load_json(input):
 	$TileMap.load_json(input)
 
+func _on_mouse_control_gui_input(event):
+	if event is InputEventMouseMotion:
+		var mouse_position = $%MouseControl.get_local_mouse_position()
+		var global_mouse_position = $AddMarker.get_global_mouse_position()
+		# Marker
+		marker_position = Vector2i(
+			floor(global_mouse_position.x / 64),
+			floor(global_mouse_position.y / 64)
+		)
+		$AddMarker.position = Vector2(marker_position * 64) + marker_offset
+		# Panning
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_MIDDLE):
+			if pan_start.x != 0 and pan_start.y != 0:
+				$Camera2D.position -= (mouse_position - pan_start) * 1/$Camera2D.zoom
+			pan_start = mouse_position
+	# Resetting panning
+	if event is InputEventMouseButton and (pan_start.x != 0 or pan_start.y != 0):
+			pan_start.x = 0
+			pan_start.y = 0
+	# Zooming
+	if event is InputEventMouseButton and event.is_pressed():
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+				$Camera2D.zoom *= 1.25
+			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				$Camera2D.zoom *= 0.75
+	# Add
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		# Get an alternate tile (yes Godot has hard-coded tiles
+		# for each rotation) based on the rotation of the marker
+		var alt = $TileMap.ROTATION_KEY[int($AddMarker.rotation_degrees)]
+		# Sets the tile
+		$TileMap.erase_at(marker_position)
+		match $%TileOptionButton.get_selected_id():
+			# Block
+			0:
+				$TileMap.set_cell(0, marker_position, 1, Vector2i(0, 0))
+			# Slope
+			1:
+				$TileMap.set_cell(0, marker_position, 1, Vector2i(1, 1), alt)
+			# Goal
+			2:
+				$TileMap.set_cell(3, marker_position, 1, Vector2i(2, 0))
+			# Trampoline
+			3:
+				$TileMap.set_cell(1, marker_position, 1, Vector2i(0, 1), alt)
+			# Speed
+			4:
+				$TileMap.set_cell(0, marker_position, 1, Vector2i(3, 1), alt)
+			# Spike :3
+			5:
+				$TileMap.set_cell(2, marker_position, 1, Vector2i(1, 0), alt)
+		emit_signal("modified")
+	# Erase
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+		$TileMap.erase_at(marker_position)
+		emit_signal("modified")
 
-func _on_add_control_modified():
-	emit_signal("modified")

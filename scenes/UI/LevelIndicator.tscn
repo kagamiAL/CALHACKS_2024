@@ -46,6 +46,12 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_u460k")
 layout_mode = 2
 theme_override_constants/separation = 30
 
+[node name="Main" type="Button" parent="CanvasLayer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+shortcut = SubResource("Shortcut_mosoo")
+text = "←"
+
 [node name="Restart" type="Button" parent="CanvasLayer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 shortcut = SubResource("Shortcut_mosoo")
@@ -64,4 +70,5 @@ theme_override_font_sizes/font_size = 32
 text = "Level 0
 "
 
+[connection signal="pressed" from="CanvasLayer/PanelContainer/HBoxContainer/Main" to="." method="_on_main_pressed"]
 [connection signal="pressed" from="CanvasLayer/PanelContainer/HBoxContainer/Restart" to="." method="_on_restart_pressed"]

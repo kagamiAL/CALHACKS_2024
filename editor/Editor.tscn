@@ -1,19 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bg0nxe4bxdesn"]
+[gd_scene load_steps=9 format=3 uid="uid://bg0nxe4bxdesn"]
 
 [ext_resource type="Script" path="res://editor/Editor.gd" id="1_qtpau"]
-[ext_resource type="Script" path="res://editor/PanControl.gd" id="2_3aju1"]
 [ext_resource type="Script" path="res://scenes/Player/Sprite.gd" id="3_gvyou"]
-[ext_resource type="Script" path="res://editor/AddControl.gd" id="3_pc26n"]
 [ext_resource type="PackedScene" uid="uid://b50u22ac7kuap" path="res://scenes/Tiles/savedtilemap/SavedTileMap.tscn" id="4_82d7c"]
 [ext_resource type="Texture2D" uid="uid://n32hsqeasyep" path="res://res/tiles.svg" id="4_wfxpc"]
-
-[sub_resource type="InputEventKey" id="InputEventKey_q1agl"]
-device = -1
-keycode = 74
-unicode = 106
-
-[sub_resource type="Shortcut" id="Shortcut_yniar"]
-events = [SubResource("InputEventKey_q1agl")]
 
 [sub_resource type="InputEventKey" id="InputEventKey_fyfmr"]
 device = -1
@@ -33,10 +23,11 @@ events = [SubResource("InputEventKey_0nhwg")]
 
 [node name="Editor" type="Node2D"]
 script = ExtResource("1_qtpau")
+marker_offset = Vector2(32, 32)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PanControl" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("camera")]
+[node name="MouseControl" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
@@ -44,24 +35,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_default_cursor_shape = 6
-script = ExtResource("2_3aju1")
-camera = NodePath("../../Camera2D")
-
-[node name="AddControl" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("marker", "tilemap", "tile_option_button")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("3_pc26n")
-marker = NodePath("../../AddMarker")
-tilemap = NodePath("../../TileMap")
-tile_option_button = NodePath("../MarginContainer/PanelContainer/HBoxContainer/Tiles/OptionButton")
-marker_offset = Vector2(32, 32)
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 12
@@ -86,7 +59,8 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="OptionButton" type="OptionButton" parent="CanvasLayer/MarginContainer/PanelContainer/HBoxContainer/Tiles"]
+[node name="TileOptionButton" type="OptionButton" parent="CanvasLayer/MarginContainer/PanelContainer/HBoxContainer/Tiles"]
+unique_name_in_owner = true
 layout_mode = 2
 item_count = 7
 selected = 0
@@ -111,18 +85,6 @@ layout_mode = 2
 [node name="Controls" type="HBoxContainer" parent="CanvasLayer/MarginContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Mode" type="OptionButton" parent="CanvasLayer/MarginContainer/PanelContainer/HBoxContainer/Controls"]
-layout_mode = 2
-shortcut = SubResource("Shortcut_yniar")
-item_count = 3
-selected = 0
-popup/item_0/text = "Pan"
-popup/item_0/id = 0
-popup/item_1/text = "Add/Delete"
-popup/item_1/id = 1
-popup/item_2/text = "Select"
-popup/item_2/id = 2
-
 [node name="Left90" type="Button" parent="CanvasLayer/MarginContainer/PanelContainer/HBoxContainer/Controls"]
 layout_mode = 2
 shortcut = SubResource("Shortcut_fy67k")
@@ -136,7 +98,6 @@ text = "↺ 90deg"
 [node name="TileMap" parent="." instance=ExtResource("4_82d7c")]
 
 [node name="AddMarker" type="Sprite2D" parent="."]
-visible = false
 modulate = Color(0.523, 1, 0.46, 0.572549)
 texture = ExtResource("4_wfxpc")
 region_enabled = true
@@ -149,10 +110,7 @@ script = ExtResource("3_gvyou")
 radius = 23.0
 color = Color(0.839216, 0.270588, 0.270588, 1)
 
-[connection signal="gui_input" from="CanvasLayer/PanControl" to="CanvasLayer/PanControl" method="_on_gui_input"]
-[connection signal="gui_input" from="CanvasLayer/AddControl" to="CanvasLayer/AddControl" method="_on_gui_input"]
-[connection signal="modified" from="CanvasLayer/AddControl" to="." method="_on_add_control_modified"]
-[connection signal="item_selected" from="CanvasLayer/MarginContainer/PanelContainer/HBoxContainer/Tiles/OptionButton" to="." method="_on_option_button_item_selected"]
-[connection signal="item_selected" from="CanvasLayer/MarginContainer/PanelContainer/HBoxContainer/Controls/Mode" to="." method="_on_mode_item_selected"]
+[connection signal="gui_input" from="CanvasLayer/MouseControl" to="." method="_on_mouse_control_gui_input"]
+[connection signal="item_selected" from="CanvasLayer/MarginContainer/PanelContainer/HBoxContainer/Tiles/TileOptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/PanelContainer/HBoxContainer/Controls/Left90" to="." method="_on_left_90_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/PanelContainer/HBoxContainer/Controls/Right90" to="." method="_on_right_90_pressed"]

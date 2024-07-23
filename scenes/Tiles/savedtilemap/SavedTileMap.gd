@@ -46,3 +46,7 @@ func load_json(input):
 			entity[2],
 			ROTATION_KEY[int(tile["rotation"])]
 		)
+
+func erase_at(erase_position: Vector2i):
+	for layer in range(get_layers_count()):
+		set_cell(layer, erase_position, 0)
