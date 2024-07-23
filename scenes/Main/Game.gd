@@ -1,12 +1,10 @@
 extends Node2D
 
 @onready var game_over_scene = load("res://scenes/UI/GameOver.tscn") as PackedScene
-@onready var level_indicator_scene = load("res://scenes/UI/LevelIndicator.tscn") as PackedScene
 
 var maps: Dictionary = {};
 var map_node: Node2D;
 var player;
-var level_indicator;
 
 @export var level_index: int;
 
@@ -61,7 +59,7 @@ func _on_player_won():
 		$GameWin.show()
 		$Player.hide()
 	else:
-		level_indicator.change_indicated_level(level_index)
+		$LevelIndicator.set_label("Level %d" % level_index, level_index, 7)
 		load_current_level()
 
 func _on_player_died():
@@ -73,6 +71,4 @@ func _ready():
 	print("Physics engine set to %d FPS" % Engine.physics_ticks_per_second)
 	set_up_maps_from_dir("res://scenes/Maps")
 	load_current_level()
-	level_indicator = level_indicator_scene.instantiate()
-	add_child(level_indicator)
 	$SoundTrack.play()
