@@ -38,14 +38,15 @@ func export_json():
 # Loads from a JSON (parsed)
 func load_json(input):
 	for tile in input:
-		var entity = ENTITY_CONVERSION_KEY[tile["type"]]
-		set_cell(
-			entity[0],
-			Vector2(tile["position"][0], tile["position"][1]),
-			entity[1],
-			entity[2],
-			ROTATION_KEY[int(tile["rotation"])]
-		)
+		if tile["type"] and tile["type"] in ENTITY_CONVERSION_KEY.keys():
+			var entity = ENTITY_CONVERSION_KEY[tile["type"]]
+			set_cell(
+				entity[0],
+				Vector2(tile["position"][0], tile["position"][1]),
+				entity[1],
+				entity[2],
+				ROTATION_KEY[int(tile["rotation"])] if tile["rotation"] else 0
+			)
 
 func erase_at(erase_position: Vector2i):
 	for layer in range(get_layers_count()):
