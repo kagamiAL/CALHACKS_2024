@@ -20,6 +20,12 @@ const ROTATION_KEY = {
 	0: 0
 }
 
+var _tile_rotation_queue = []
+
+func _ready():
+	for tile_rotation in _tile_rotation_queue:
+		call_deferred("set_tile_scene_rotation", tile_rotation[0], tile_rotation[1])
+
 # Exports to a JSON (not string)
 func export_json():
 	var exported = []
@@ -39,22 +45,41 @@ func export_json():
 		exported.append({
 			"type": "speed",
 			"position": [speed.x, speed.y],
-			"rotation": 0
+			"rotation": int(rad_to_deg(get_tile_scene_rotation(speed)))
 		})
 	for spikeshooter in get_used_cells_by_id(ENTITY_CONVERSION_KEY["spikeshooter"][0], ENTITY_CONVERSION_KEY["spikeshooter"][1], ENTITY_CONVERSION_KEY["spikeshooter"][2], ENTITY_CONVERSION_KEY["spikeshooter"][3]):
 		exported.append({
 			"type": "spikeshooter",
 			"position": [spikeshooter.x, spikeshooter.y],
-			"rotation": 0
+			"rotation": int(rad_to_deg(get_tile_scene_rotation(spikeshooter)))
 		})
 	return exported
+
+# Gets tile scenes at positions
+func get_tile_scenes(tile_position: Vector2i):
+	var scenes = []
+	for child in get_children():
+		var child_position = local_to_map(child.position)
+		if int(child_position.x) == tile_position.x and int(child_position.y) == tile_position.y:
+			scenes.append(child)
+	return scenes
+
+func set_tile_scene_rotation(tile_position: Vector2i, tile_rotation: float):
+	var tile_scenes = get_tile_scenes(tile_position)
+	for tile_scene in tile_scenes:
+		tile_scene.rotation = tile_rotation
+
+# Rotation in rad
+func get_tile_scene_rotation(tile_position: Vector2i) -> float:
+	var tile_scenes = get_tile_scenes(tile_position)
+	return get_tile_scenes(tile_position)[0].rotation if tile_scenes else 0
 
 # Loads from a JSON (parsed)
 func load_json(input):
 	for tile in input:
 		if tile["type"] and tile["type"] in ENTITY_CONVERSION_KEY.keys():
 			var entity = ENTITY_CONVERSION_KEY[tile["type"]]
-			var alternate_tile = ROTATION_KEY[int(tile["rotation"])] if tile["rotation"] else 0
+			var alternate_tile = ROTATION_KEY[int(tile["rotation"])] if tile["rotation"] and int(tile["rotation"]) in ROTATION_KEY else 0
 			set_cell(
 				entity[0],
 				Vector2(tile["position"][0], tile["position"][1]),
@@ -62,6 +87,16 @@ func load_json(input):
 				entity[2],
 				entity[3] if len(entity) > 3 else alternate_tile
 			)
+			if is_inside_tree():
+				call_deferred("set_tile_scene_rotation",
+					Vector2i(tile["position"][0], tile["position"][1]),
+					deg_to_rad(int(tile["rotation"]))
+				)
+			else:
+				_tile_rotation_queue.append([
+					Vector2i(tile["position"][0], tile["position"][1]),
+					deg_to_rad(int(tile["rotation"]))
+				])
 
 func erase_at(erase_position: Vector2i):
 	for layer in range(get_layers_count()):

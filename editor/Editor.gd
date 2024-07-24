@@ -115,6 +115,7 @@ func _on_mouse_control_gui_input(event):
 			# Spike shooter
 			6:
 				$TileMap.set_cell(0, marker_position, 2, Vector2i(0, 0), 1)
+		$TileMap.call_deferred("set_tile_scene_rotation", marker_position, $AddMarker.rotation)
 		emit_signal("modified")
 	# Erase
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):

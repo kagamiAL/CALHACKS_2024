@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_imx73"]
 size = Vector2(64, 63)
 
-[node name="Spikeshooter" type="StaticBody2D"]
+[node name="Spikeshooter" type="StaticBody2D" groups=["scene_tiles"]]
 script = ExtResource("1_csldc")
 spike_scene = ExtResource("2_x3ukg")
 speed = 500.0

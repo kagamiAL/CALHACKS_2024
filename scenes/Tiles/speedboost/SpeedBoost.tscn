@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_njfxn"]
 size = Vector2(64, 64)
 
-[node name="SpeedBoost" type="Area2D"]
+[node name="SpeedBoost" type="Area2D" groups=["scene_tiles"]]
 script = ExtResource("1_thlmw")
 speed = 400.0
 
