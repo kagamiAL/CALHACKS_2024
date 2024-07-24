@@ -113,9 +113,11 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.4
+current_tab = 1
 all_tabs_in_front = true
 
 [node name="Maps" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/TabContainer/Maps"]
@@ -146,11 +148,37 @@ size_flags_vertical = 3
 hide_folding = true
 hide_root = true
 
-[node name="Properties" type="TextEdit" parent="PanelContainer/VBoxContainer/HBoxContainer/TabContainer"]
-visible = false
+[node name="Properties" type="GridContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/TabContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 3
-text = "In development!"
+columns = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/TabContainer/Properties"]
+layout_mode = 2
+text = "name"
+
+[node name="PropertyName" type="LineEdit" parent="PanelContainer/VBoxContainer/HBoxContainer/TabContainer/Properties"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/TabContainer/Properties"]
+layout_mode = 2
+text = "author"
+
+[node name="PropertyAuthor" type="LineEdit" parent="PanelContainer/VBoxContainer/HBoxContainer/TabContainer/Properties"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/TabContainer/Properties"]
+layout_mode = 2
+text = "song"
+
+[node name="PropertySong" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/TabContainer/Properties"]
+layout_mode = 2
+tooltip_text = "<null>"
+text = "Load file..."
+text_overrun_behavior = 1
+clip_text = true
 
 [node name="LoadDialog" type="FileDialog" parent="."]
 title = "Open a File"
@@ -158,6 +186,15 @@ ok_button_text = "Open"
 file_mode = 0
 access = 2
 filters = PackedStringArray(".json")
+use_native_dialog = true
+
+[node name="LoadMusicDialog" type="FileDialog" parent="."]
+title = "Open a File"
+size = Vector2i(284, 126)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+filters = PackedStringArray(".ogg", ".mp3")
 use_native_dialog = true
 
 [node name="SaveDialog" type="FileDialog" parent="."]
@@ -183,6 +220,8 @@ dialog_text = "Are you sure? Any unsaved changes will be lost."
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/TabContainer/Maps/HBoxContainer/MoveUp" to="." method="_on_move_up_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/TabContainer/Maps/HBoxContainer/MoveDown" to="." method="_on_move_down_pressed"]
 [connection signal="item_selected" from="PanelContainer/VBoxContainer/HBoxContainer/TabContainer/Maps/MapTree" to="." method="_on_map_tree_item_selected"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/TabContainer/Properties/PropertySong" to="." method="_on_property_song_pressed"]
 [connection signal="file_selected" from="LoadDialog" to="." method="_on_load_dialog_file_selected"]
+[connection signal="file_selected" from="LoadMusicDialog" to="." method="_on_load_music_dialog_file_selected"]
 [connection signal="file_selected" from="SaveDialog" to="." method="_on_save_dialog_file_selected"]
 [connection signal="confirmed" from="RunDialog" to="." method="_on_run_dialog_confirmed"]

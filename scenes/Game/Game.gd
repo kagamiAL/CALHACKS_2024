@@ -17,8 +17,26 @@ func load_json(input):
 		tilemap.load_json(map["data"])
 		tilemap.name = map["name"]
 		maps.append(tilemap)
+	if "song" in input and FileAccess.file_exists(input["song"]):
+		if input["song"].ends_with(".ogg"):
+			var audio_stream = AudioStreamOggVorbis.load_from_file(input["song"])
+			audio_stream.loop = true
+			$SoundTrack.stream = audio_stream
+		if input["song"].ends_with(".mp3"):
+			var audio_stream = AudioStreamMP3.new()
+			var file = FileAccess.open(input["song"], FileAccess.READ)
+			audio_stream.data = file.get_buffer(file.get_length())
+			audio_stream.loop = true
+			$SoundTrack.stream = audio_stream
+		if input["song"].ends_with(".wav"):
+			var audio_stream = AudioStreamWAV.new()
+			var file = FileAccess.open(input["song"], FileAccess.READ)
+			audio_stream.data = file.get_buffer(file.get_length())
+			audio_stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
+			$SoundTrack.stream = audio_stream
+		
 	load_current_level()
-	$SoundTrack.play()
+	$SoundTrack.call_deferred("play")
 
 func load_current_level():
 	if map_node:
