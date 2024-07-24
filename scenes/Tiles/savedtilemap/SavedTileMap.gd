@@ -22,10 +22,6 @@ const ROTATION_KEY = {
 
 var _tile_rotation_queue = []
 
-func _ready():
-	for tile_rotation in _tile_rotation_queue:
-		call_deferred("set_tile_scene_rotation", tile_rotation[0], tile_rotation[1])
-
 # Exports to a JSON (not string)
 func export_json():
 	var exported = []
@@ -101,3 +97,8 @@ func load_json(input):
 func erase_at(erase_position: Vector2i):
 	for layer in range(get_layers_count()):
 		set_cell(layer, erase_position, -1)
+
+
+func _on_tree_entered():
+	for tile_rotation in _tile_rotation_queue:
+		call_deferred("set_tile_scene_rotation", tile_rotation[0], tile_rotation[1])
