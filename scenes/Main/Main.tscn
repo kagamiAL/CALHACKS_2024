@@ -68,7 +68,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-16.0]
+"values": [-10.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -80,7 +80,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [5.0]
 }
 
 [sub_resource type="Animation" id="Animation_hgjb7"]
@@ -96,7 +96,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-80.0, -10.0]
+"values": [-80.0, 0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -108,7 +108,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, -80.0]
+"values": [5.0, -80.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -249,12 +249,14 @@ visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_aul47")
+volume_db = 5.0
 autoplay = true
 bus = &"SoundTrack"
 
 [node name="MapTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_awp7m")
-volume_db = -16.0
+volume_db = -10.0
+bus = &"SoundTrack"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
