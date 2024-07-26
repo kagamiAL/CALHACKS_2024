@@ -27,15 +27,17 @@ func export_json():
 	var exported = []
 	for layer in range(get_layers_count()):
 		for tile_pos in get_used_cells(layer):
-			exported.append({
-				"type": ENTITY_CONVERSION_KEY.find_key([
-					layer,
-					get_cell_source_id(layer, tile_pos),
-					get_cell_atlas_coords(layer, tile_pos)
-				]),
-				"position": [tile_pos.x, tile_pos.y],
-				"rotation": ROTATION_KEY.find_key(get_cell_alternative_tile(layer, tile_pos))
-			})
+			var type = ENTITY_CONVERSION_KEY.find_key([
+				layer,
+				get_cell_source_id(layer, tile_pos),
+				get_cell_atlas_coords(layer, tile_pos)
+			])
+			if type:
+				exported.append({
+					"type": type,
+					"position": [tile_pos.x, tile_pos.y],
+					"rotation": ROTATION_KEY.find_key(get_cell_alternative_tile(layer, tile_pos))
+				})
 	# Loop for EACH kind of scene
 	for speed in get_used_cells_by_id(ENTITY_CONVERSION_KEY["speed"][0], ENTITY_CONVERSION_KEY["speed"][1], ENTITY_CONVERSION_KEY["speed"][2], ENTITY_CONVERSION_KEY["speed"][3]):
 		exported.append({
