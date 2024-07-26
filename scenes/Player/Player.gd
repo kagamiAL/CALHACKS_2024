@@ -1,9 +1,16 @@
 extends RigidBody2D
 
-@export var SPEED = 20
+signal died
+
+signal won
+
 const SLOWDOWN = 10
+
 const JUMP_VELOCITY = -600.0
+
 const SKEW_SPEED = 0.1
+
+@export var SPEED = 20
 
 @export var trampoline_bounce_amt = 0
 
@@ -13,10 +20,6 @@ const SKEW_SPEED = 0.1
 
 # Stores instantaneous collisions with tiles
 var _collisions = []
-
-signal died
-
-signal won
 
 # When normalising the linear velocity to a 0-1 value, this specifies the "maximum" linear velocity
 var NORMALISE_VELOCITY_AMT = 1500.
@@ -28,11 +31,12 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var reset_state = false
 var moveVector: Vector2
 
-#Used to handle contact audio request
-var contact_audio_request: bool = false
 
 #Used to shoot raycast to prevent clipping in walls
 var last_position: Vector2;
+
+# Stores the time since the last time ContactAudio was playing.
+var contact_audio_request_timestamp = 0
 
 func _process(delta):
 	$%Time.text = "%.2f" % get_time_elapsed()
@@ -46,7 +50,6 @@ func _physics_process(delta):
 
 	# Add the gravity.
 	if not is_on_floor():
-		contact_audio_request = true
 		linear_velocity.y += gravity * delta
 
 	# Handle jump.
@@ -86,12 +89,9 @@ func _physics_process(delta):
 
 func handle_tile_collision(tilemap_layer):
 	match tilemap_layer:
-		# Static bodies (makes a "clink" sound)
+		# Static bodies
 		0:
-			if contact_audio_request:
-				contact_audio_request = false
-				$ContactAudio.play()
-			return
+			pass
 
 		# Trampolines
 		1:
@@ -180,3 +180,20 @@ func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shap
 func _on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
 	if body is TileMap:
 		_collisions.remove_at(_collisions.find(body_rid))
+
+# Makes a sound when it hits a body
+func _on_body_entered(body):
+	print("entered")
+	if (not contact_audio_request_timestamp\
+	   or (Time.get_ticks_msec() - contact_audio_request_timestamp) > 50)\
+		and not $ContactAudio.playing:
+		if contact_audio_request_timestamp:
+			var difference = Time.get_ticks_msec() - contact_audio_request_timestamp
+			# TODO: contant
+			var max_difference = 300
+			print(min(difference, max_difference))
+			$ContactAudio.volume_db = min(difference, max_difference) / max_difference * 20 - 19
+			$ContactAudio.pitch_scale =  1 - (1 - min(difference, max_difference) / max_difference) * 0.2
+		$ContactAudio.play()
+		contact_audio_request_timestamp = Time.get_ticks_msec()
+	return
