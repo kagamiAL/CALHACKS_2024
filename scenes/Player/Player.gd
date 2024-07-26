@@ -183,15 +183,13 @@ func _on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape
 
 # Makes a sound when it hits a body
 func _on_body_entered(body):
-	print("entered")
 	if (not contact_audio_request_timestamp\
 	   or (Time.get_ticks_msec() - contact_audio_request_timestamp) > 50)\
 		and not $ContactAudio.playing:
 		if contact_audio_request_timestamp:
 			var difference = Time.get_ticks_msec() - contact_audio_request_timestamp
-			# TODO: contant
+			# TODO: constant
 			var max_difference = 300
-			print(min(difference, max_difference))
 			$ContactAudio.volume_db = min(difference, max_difference) / max_difference * 20 - 19
 			$ContactAudio.pitch_scale =  1 - (1 - min(difference, max_difference) / max_difference) * 0.2
 		$ContactAudio.play()
