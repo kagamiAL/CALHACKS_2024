@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bhju5n4ymgoto"]
+[gd_scene load_steps=18 format=3 uid="uid://bhju5n4ymgoto"]
 
 [ext_resource type="Script" path="res://scenes/Main/Menu.gd" id="1_r3bay"]
 [ext_resource type="AudioStream" uid="uid://bxr6qqqx2lq5d" path="res://res/audio/MainMenuTheme.ogg" id="3_aul47"]
@@ -6,6 +6,7 @@
 [ext_resource type="TileSet" uid="uid://83e6r7d4e13" path="res://scenes/Tiles/TileMap.tres" id="3_udspc"]
 [ext_resource type="PackedScene" uid="uid://ck22cvxmk301" path="res://scenes/UI/Settings.tscn" id="4_mw6f4"]
 [ext_resource type="PackedScene" uid="uid://dqfy5urq65gy0" path="res://editor/Main/EditorMain.tscn" id="5_a2ivn"]
+[ext_resource type="PackedScene" uid="uid://b43w80klpbdo6" path="res://scenes/UI/Levels.tscn" id="6_c5yde"]
 [ext_resource type="AudioStream" uid="uid://bwq6ovbkav027" path="res://res/audio/MapTheme.ogg" id="7_awp7m"]
 
 [sub_resource type="SystemFont" id="SystemFont_nlf74"]
@@ -239,6 +240,10 @@ unique_name_in_owner = true
 visible = false
 
 [node name="Editor" parent="CanvasLayer" instance=ExtResource("5_a2ivn")]
+unique_name_in_owner = true
+visible = false
+
+[node name="Levels" parent="CanvasLayer" instance=ExtResource("6_c5yde")]
 unique_name_in_owner = true
 visible = false
 

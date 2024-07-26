@@ -73,7 +73,7 @@ func get_tile_scene_rotation(tile_position: Vector2i) -> float:
 # Loads from a JSON (parsed)
 func load_json(input):
 	for tile in input:
-		if tile["type"] and tile["type"] in ENTITY_CONVERSION_KEY.keys():
+		if "type" in tile.keys() and tile["type"] in ENTITY_CONVERSION_KEY.keys():
 			var entity = ENTITY_CONVERSION_KEY[tile["type"]]
 			var alternate_tile = ROTATION_KEY[int(tile["rotation"])] if tile["rotation"] and int(tile["rotation"]) in ROTATION_KEY else 0
 			set_cell(

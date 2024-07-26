@@ -6,7 +6,7 @@
 [node name="Settings" instance=ExtResource("1_mn0fb")]
 script = ExtResource("2_yq6fm")
 
-[node name="Title" parent="PanelContainer/VBoxContainer/VBoxContainer" index="0"]
+[node name="Title" parent="PanelContainer/VBoxContainer/Header" index="0"]
 text = "Settings"
 
 [node name="Music Volume" type="HBoxContainer" parent="PanelContainer/VBoxContainer/ScrollContainer/Content" index="0"]

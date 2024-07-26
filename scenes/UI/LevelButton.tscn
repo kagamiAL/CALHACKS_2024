@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0tjurbwslrgx"]
+
+[ext_resource type="Script" path="res://scenes/UI/LevelButton.gd" id="1_ro0ua"]
+[ext_resource type="PackedScene" uid="uid://b50u22ac7kuap" path="res://scenes/Tiles/savedtilemap/SavedTileMap.tscn" id="2_jdfa3"]
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(128, 128)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.501961)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.501961)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.501961)
+theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 0.501961)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0.501961)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.501961)
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("1_ro0ua")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+gui_disable_input = true
+size = Vector2i(120, 120)
+
+[node name="Camera2D" type="Camera2D" parent="SubViewport"]
+zoom = Vector2(0.1, 0.1)
+
+[node name="SavedTileMap" parent="SubViewport" instance=ExtResource("2_jdfa3")]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
