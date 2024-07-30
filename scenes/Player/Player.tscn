@@ -175,7 +175,7 @@ physics_material_override = SubResource("PhysicsMaterial_pk2sw")
 max_contacts_reported = 3
 contact_monitor = true
 script = ExtResource("1_3ef65")
-SPEED = 25
+SPEED = 1562
 trampoline_bounce_amt = 1000
 jump_slow_factor = 0.574
 
