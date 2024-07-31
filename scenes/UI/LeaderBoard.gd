@@ -1,7 +1,7 @@
 extends "res://scenes/UI/Dialog.gd"
 
 @onready var leader_board_data = get_node("/root/LeaderboardData")
-@onready var scores = $%Scores
+@onready var scores = $%Content
 @onready var score_template = load("res://scenes/UI/score_template.tscn")
 
 func _on_button_button_down():
