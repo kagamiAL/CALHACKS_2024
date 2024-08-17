@@ -7,3 +7,7 @@ Submission to CalgaryHacks 2024. Team members:
 - @Zirconova
 - @RuiWare
 - @pastthepixels
+
+## To do
+- [ ] Make leaderboard per-map
+- [ ] Render tiles as scene tiles with polygons imported from an SVG rather than as actual tiles (hell)
