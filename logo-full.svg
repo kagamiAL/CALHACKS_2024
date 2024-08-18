@@ -1,109 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
-<svg
-   width="169.09mm"
-   height="59.475mm"
-   version="1.1"
-   viewBox="0 0 169.09 59.475"
-   id="svg5"
-   sodipodi:docname="logo-full.svg"
-   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview5"
-     pagecolor="#ffffff"
-     bordercolor="#000000"
-     borderopacity="0.25"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1"
-     inkscape:document-units="mm"
-     inkscape:zoom="2.24072"
-     inkscape:cx="128.53012"
-     inkscape:cy="170.03463"
-     inkscape:window-width="750"
-     inkscape:window-height="1020"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="g5" />
-  <defs
-     id="defs2">
-    <clipPath
-       id="clipPath3">
-      <g
-         id="use1"
-         stroke="#1b1f2b"
-         stroke-width="0" />
-    </clipPath>
-    <filter
-       id="filter76"
-       x="0"
-       y="0"
-       width="2"
-       height="2"
-       color-interpolation-filters="sRGB"
-       inkscape:auto-region="false">
-      <feFlood
-         flood-color="rgb(27,31,43)"
-         in="SourceGraphic"
-         result="flood"
-         id="feFlood1" />
-      <feGaussianBlur
-         in="SourceGraphic"
-         result="blur"
-         stdDeviation="0.007102272727272727"
-         id="feGaussianBlur1" />
-      <feOffset
-         dx="1.5"
-         dy="1.5"
-         in="blur"
-         result="offset"
-         id="feOffset1" />
-      <feComposite
-         in="flood"
-         in2="offset"
-         operator="in"
-         result="comp1"
-         id="feComposite1" />
-      <feComposite
-         in="SourceGraphic"
-         in2="comp1"
-         result="comp2"
-         id="feComposite2" />
-    </filter>
-  </defs>
-  <g
-     transform="translate(-19.647 -1.477)"
-     filter="url(#filter76)"
-     id="g5">
-    <path
-       d="m7.5174 0h45.394c4.1646 0 7.5174 3.3528 7.5174 7.5174v45.394c0 4.1646-3.3528 7.5174-7.5174 7.5174h-45.394c-4.1646 0-7.5174-3.3528-7.5174-7.5174v-45.394c0-4.1646 3.3528-7.5174 7.5174-7.5174z"
-       fill="#e9efec"
-       id="path2"
-       transform="matrix(0.54843,0,0,0.54843,32.481,13.644)" />
-    <path
-       id="path2-3"
-       style="stroke-width:0.54843;fill:#1b1f2b;fill-opacity:1"
-       d="m 32.481,31.126469 v 11.53573 c 0,2.283989 1.838756,4.122746 4.122745,4.122746 h 24.895638 c 2.28399,0 4.122746,-1.838757 4.122746,-4.122746 v -2.655652 z" />
-    <path
-       d="m43.04 26.737a12.825 12.825 0 0 1-12.825 12.825 12.825 12.825 0 0 1-12.825-12.825 12.825 12.825 0 0 1 12.825-12.825 12.825 12.825 0 0 1 12.825 12.825z"
-       stroke-width=".93196"
-       id="path3"
-       transform="matrix(0.54843,0,0,0.54843,32.481,13.644)"
-       style="fill:#1b1f2b;fill-opacity:1" />
-    <path
-       d="m85.237 37.588h-2.8328v-8.4985h-1.4164v4.2493h-1.4164v-4.2493h-1.4164v8.4985h-2.8328v-12.748h2.8328v2.8328h1.4164v1.4164h1.4164v-1.4164h1.4164v-2.8328h2.8328zm8.4985 0h-5.6657v-1.4164h1.4164v-9.9149h-1.4164v-1.4164h5.6657v1.4164h-1.4164v9.9149h1.4164zm14.164 0h-2.8328v-4.2493h-1.4164v-1.4164h-1.4164v-1.4164h-1.4164v7.0821h-2.8328v-12.748h2.8328v2.8328h1.4164v1.4164h1.4164v1.4164h1.4164v-5.6657h2.8328zm21.246-1.4164h-1.4164v1.4164h-5.6657v-1.4164h-1.4164v-1.4164h2.8328v1.4164h2.8328v-2.8328h-1.4164v-1.4164h-1.4164v-1.4164h-1.4164v-1.4164h-1.4164v-2.8328h1.4164v-1.4164h5.6657v1.4164h1.4164v1.4164h-2.8328v-1.4164h-2.8328v2.8328h1.4164v1.4164h1.4164v1.4164h1.4164v1.4164h1.4164zm11.331-5.6657h-1.4164v1.4164h-4.2493v5.6657h-2.8328v-12.748h7.0821v1.4164h1.4164zm-2.8328 0v-4.2493h-2.8328v4.2493zm14.164 7.0821h-2.8328v-4.2493h-2.8328v4.2493h-2.8328v-9.9149h1.4164v-1.4164h1.4164v-1.4164h2.8328v1.4164h1.4164v1.4164h1.4164zm-2.8328-5.6657v-4.2493h-2.8328v4.2493zm14.164 4.2493h-1.4164v1.4164h-5.6657v-1.4164h-1.4164v-9.9149h1.4164v-1.4164h5.6657v1.4164h1.4164v2.8328h-2.8328v-2.8328h-2.8328v9.9149h2.8328v-2.8328h2.8328zm11.331 1.4164h-8.4985v-12.748h8.4985v1.4164h-5.6657v4.2493h4.2492v1.4164h-4.2492v4.2493h5.6657z"
-       fill="#fff"
-       stroke="#1b1f2b"
-       stroke-width="3.175"
-       style="paint-order:stroke fill markers"
-       aria-label="MIN SPACE"
-       id="path5" />
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="130.03mm" height="31.982mm" version="1.1" viewBox="0 0 130.03 31.982" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(-27.489 -17.598)" filter="url(#filter76)">
+  <path d="m72.517 47.925h-2.8328v-8.4985h-1.4164v4.2493h-1.4164v-4.2493h-1.4164v8.4985h-2.8328v-12.748h2.8328v2.8328h1.4164v1.4164h1.4164v-1.4164h1.4164v-2.8328h2.8328zm8.4985 0h-5.6657v-1.4164h1.4164v-9.9149h-1.4164v-1.4164h5.6657v1.4164h-1.4164v9.9149h1.4164zm14.164 0h-2.8328v-4.2493h-1.4164v-1.4164h-1.4164v-1.4164h-1.4164v7.0821h-2.8328v-12.748h2.8328v2.8328h1.4164v1.4164h1.4164v1.4164h1.4164v-5.6657h2.8328z" fill="#e9efec" stroke="#1b1f2b" stroke-width="3.175" style="paint-order:stroke fill markers" aria-label="MIN SPACE"/>
+  <g transform="matrix(.86923 0 0 .86923 .8435 7.3258)" stroke-width="3.6527">
+   <rect x="32.481" y="13.644" width="33.141" height="33.141" fill="#e9efec" stroke="#1b1f2b" stroke-linecap="square" stroke-width="3.6527" style="font-variation-settings:'wght' 724;paint-order:stroke fill markers"/>
+   <path d="m67.209 40.455-36.316-9.7309v17.159h36.316z" fill="#1b1f2b" style="font-variation-settings:'wght' 724"/>
+   <path transform="matrix(.54843 0 0 .54843 32.481 13.644)" d="m43.04 26.737a12.825 12.825 0 0 1-12.825 12.825 12.825 12.825 0 0 1-12.825-12.825 12.825 12.825 0 0 1 12.825-12.825 12.825 12.825 0 0 1 12.825 12.825z" fill="#1b1f2b" stroke-width="6.6602"/>
   </g>
+  <path d="m110.6 46.508h-1.4164v1.4164h-5.6657v-1.4164h-1.4164v-1.4164h2.8328v1.4164h2.8328v-2.8328h-1.4164v-1.4164h-1.4164v-1.4164h-1.4164v-1.4164h-1.4164v-2.8328h1.4164v-1.4164h5.6657v1.4164h1.4164v1.4164h-2.8328v-1.4164h-2.8328v2.8328h1.4164v1.4164h1.4164v1.4164h1.4164v1.4164h1.4164zm11.331-5.6657h-1.4164v1.4164h-4.2493v5.6657h-2.8328v-12.748h7.0821v1.4164h1.4164zm-2.8328 0v-4.2493h-2.8328v4.2493zm14.164 7.0821h-2.8328v-4.2493h-2.8328v4.2493h-2.8328v-9.9149h1.4164v-1.4164h1.4164v-1.4164h2.8328v1.4164h1.4164v1.4164h1.4164zm-2.8328-5.6657v-4.2493h-2.8328v4.2493zm14.164 4.2493h-1.4164v1.4164h-5.6657v-1.4164h-1.4164v-9.9149h1.4164v-1.4164h5.6657v1.4164h1.4164v2.8328h-2.8328v-2.8328h-2.8328v9.9149h2.8328v-2.8328h2.8328zm11.331 1.4164h-8.4985v-12.748h8.4985v1.4164h-5.6657v4.2493h4.2492v1.4164h-4.2492v4.2493h5.6657z" fill="#e9efec" stroke="#1b1f2b" stroke-width="3.175" style="paint-order:stroke fill markers"/>
+ </g>
 </svg>
