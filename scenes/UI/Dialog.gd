@@ -1,6 +1,6 @@
 extends Control
 
-@export var button_scene : PackedScene
+@export var button_scene: PackedScene
 
 func clear_buttons():
 	for child in $%Levels.get_children():
@@ -12,7 +12,7 @@ func load_buttons():
 	if dir:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
-		
+
 		while file_name != "":
 			print_debug(file_name)
 			if file_name.ends_with(".json"):
@@ -46,6 +46,8 @@ func _on_file_dialog_file_selected(path):
 	# Copy file
 	var dir = DirAccess.open("user://")
 	dir.make_dir("maps")
+	if OS.has_feature("windows"):
+		path = path.replace("\\", "/")
 	dir.copy(path, "user://maps/" + path.split("/")[-1])
 	# Reload buttons
 	clear_buttons()
