@@ -129,7 +129,8 @@ func _on_editor_modified():
 	if selected:
 		maps[selected] = $%Editor.export_json()
 
-func _on_save_dialog_file_selected(path):
+func _on_save_dialog_file_selected(path : String):
+	path = path.replace(".json", "") + ".json"
 	var file = FileAccess.open(path, FileAccess.WRITE)
 	file.store_string(JSON.stringify(export_json()))
 	file.close()
