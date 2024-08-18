@@ -4,13 +4,11 @@
 [ext_resource type="AudioStream" uid="uid://bxr6qqqx2lq5d" path="res://res/audio/MainMenuTheme.ogg" id="3_aul47"]
 [ext_resource type="PackedScene" uid="uid://inas5xn4h6tb" path="res://scenes/UI/LeaderBoard.tscn" id="3_mcylv"]
 [ext_resource type="TileSet" uid="uid://83e6r7d4e13" path="res://scenes/Tiles/TileMap.tres" id="3_udspc"]
+[ext_resource type="Texture2D" uid="uid://cnnm8mw1n4hvj" path="res://logo-full.svg" id="3_wnrrw"]
 [ext_resource type="PackedScene" uid="uid://ck22cvxmk301" path="res://scenes/UI/Settings.tscn" id="4_mw6f4"]
 [ext_resource type="PackedScene" uid="uid://dqfy5urq65gy0" path="res://editor/Main/EditorMain.tscn" id="5_a2ivn"]
 [ext_resource type="PackedScene" uid="uid://b43w80klpbdo6" path="res://scenes/UI/Levels.tscn" id="6_c5yde"]
 [ext_resource type="AudioStream" uid="uid://bwq6ovbkav027" path="res://res/audio/MapTheme.ogg" id="7_awp7m"]
-
-[sub_resource type="SystemFont" id="SystemFont_nlf74"]
-font_names = PackedStringArray("Century Gothic")
 
 [sub_resource type="SystemFont" id="SystemFont_p7tdo"]
 font_names = PackedStringArray("Century Gothic")
@@ -170,26 +168,15 @@ offset_bottom = 365.0
 grow_horizontal = 2
 theme_override_constants/separation = 32
 
-[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
-texture_filter = 1
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.105882, 0.121569, 0.168627, 1)
-theme_override_colors/font_outline_color = Color(0.105882, 0.121569, 0.168627, 1)
-theme_override_constants/shadow_offset_x = 4
-theme_override_constants/shadow_offset_y = 4
-theme_override_constants/outline_size = 2
-theme_override_constants/shadow_outline_size = 0
-theme_override_fonts/font = SubResource("SystemFont_nlf74")
-theme_override_font_sizes/font_size = 64
-text = "MIN SPACE"
-horizontal_alignment = 1
-vertical_alignment = 1
+texture = ExtResource("3_wnrrw")
 
 [node name="Play" type="Button" parent="CanvasLayer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(120, 32)
+custom_minimum_size = Vector2(256, 32)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_fonts/font = SubResource("SystemFont_p7tdo")
 theme_override_font_sizes/font_size = 24
 text = "Play
@@ -197,7 +184,9 @@ text = "Play
 
 [node name="Leaderboard" type="Button" parent="CanvasLayer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_fonts/font = SubResource("SystemFont_8r0ef")
 theme_override_font_sizes/font_size = 24
 text = "Leaderboard
@@ -205,21 +194,27 @@ text = "Leaderboard
 
 [node name="SettingsButton" type="Button" parent="CanvasLayer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_fonts/font = SubResource("SystemFont_8r0ef")
 theme_override_font_sizes/font_size = 24
 text = "Settings"
 
 [node name="MapEditor" type="Button" parent="CanvasLayer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_fonts/font = SubResource("SystemFont_8r0ef")
 theme_override_font_sizes/font_size = 24
 text = "Map Editor"
 
 [node name="Quit" type="Button" parent="CanvasLayer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_fonts/font = SubResource("SystemFont_8r0ef")
 theme_override_font_sizes/font_size = 24
 text = "Quit"
